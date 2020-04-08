@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TechBlog</title>
+    <title>SayuriBlog</title>
     <link>/</link>
-    <description>Recent content on TechBlog</description>
+    <description>Recent content on SayuriBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
@@ -24,7 +24,7 @@
     <item>
       <title>Unposts</title>
       <link>/unpost/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/unpost/</guid>
       <description></description>

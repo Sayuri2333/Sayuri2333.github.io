@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>强化学习基础&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.c8cb6d3b67b62dd1cf735de3bfe336eb76f6084bdbbe8031095f142fa05b05040da7f976430b0cf9f42f5d5275db6789.css" integrity="sha384-yMttO2e2LdHPc13jv&#43;M263b2CEvbvoAxCV8UL6BbBQQNp/l2QwsM&#43;fQvXVJ122eJ"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">强化学习基础</h1><p class="article date">Wednesday, May 6, 2020</p></section><article class="article markdown-body"><h4 id="强化学习基本要素">强化学习基本要素</h4>
+<ul>
+<li>环境状态$S$,  t时刻环境的状态$S_t$是它的环境状态集中的某一个状态。</li>
+<li>个体动作$A$， t时刻个体采取的动作$A_t$是它的动作集中某一个动作。</li>
+<li>环境奖励$R$， t时刻个体在状态$S_t$采取的动作$A_t$对应的奖励$R_{t+1}$会在t+1时刻得到。</li>
+<li>个体策略$\pi$，常见的策略为一个条件概率分布$\pi(a|s) = P(A_t=a | S_t=s) $</li>
+<li>价值函数$v_{\pi}(s)$，通常考虑当前奖励与延时奖励$ v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+&hellip;|S_t=s) $</li>
+<li>奖励衰减因子$\gamma$，取值在[0, 1]之间，用来控制延时奖励的衰减速率</li>
+<li>环境转化模型$P_{ss&rsquo;}^a$，意味着在当前状态$s$下采取动作$a$，转移到状态$s'$的概率</li>
+<li>探索率$\epsilon$，主要用于强化学习训练迭代的$\epsilon-greedy$法中</li>
+</ul>
+<h4 id="强化学习的简单实例">强化学习的简单实例</h4>
+<p>使用Python实现玩九宫棋的程序，程序具体实现方法参考我的<a href="https://github.com/Sayuri2333/reinforcement_learning"target="_blank">github</a>。</p>
+</article><section class="article labels"><a class="category" href=/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/>强化学习</a></section><section class="article navigation"><p><a class="link" href="/post/%E4%B8%9C%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%83%85%E6%8A%A5%E5%AD%A6%E7%8E%AF%E7%BB%BC%E5%90%88%E6%83%85%E6%8A%A5%E5%AD%A6%E8%80%83%E5%AD%A6%E7%BB%8F%E9%AA%8C/"><span class="li">&rarr;</span>东京大学情报学环综合情报学考学经验</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
+</body>
+
+</html>

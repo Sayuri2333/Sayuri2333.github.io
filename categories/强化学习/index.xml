@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>马尔可夫决策过程</title>
+      <link>/post/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/</guid>
+      <description>引入马尔可夫决策过程(MDP) 在强化学习基础介绍的强化学习要素中，状态转移概率$P_{ss&amp;rsquo;}^a$不仅与上一个状态有关，也与之</description>
+    </item>
+    
+    <item>
       <title>强化学习入门资料</title>
       <link>/post/%E4%B9%A6%E7%9B%AE/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>

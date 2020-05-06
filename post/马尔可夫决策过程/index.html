@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>马尔可夫决策过程&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.c8cb6d3b67b62dd1cf735de3bfe336eb76f6084bdbbe8031095f142fa05b05040da7f976430b0cf9f42f5d5275db6789.css" integrity="sha384-yMttO2e2LdHPc13jv&#43;M263b2CEvbvoAxCV8UL6BbBQQNp/l2QwsM&#43;fQvXVJ122eJ"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">马尔可夫决策过程</h1><p class="article date">Wednesday, May 6, 2020</p></section><article class="article markdown-body"><h4 id="引入马尔可夫决策过程mdp">引入马尔可夫决策过程(MDP)</h4>
+<p>在强化学习基础介绍的强化学习要素中，状态转移概率$P_{ss&rsquo;}^a$不仅与上一个状态有关，也与之前所有状态形成的状态序列有关。为了减少建模的难度，我们假设状态的转移具有马尔可夫性，即转移到下一个状态的概率仅仅与上一个状态$s$有关，与以前的状态序列无关。以上假设可以使用公式表示：
+$$
+P_{ss&rsquo;}^a = \mathbb{E}(S_{t+1}=s'|S_t=s, A_t=a)
+$$
+除此之外，我们也对强化学习中的策略$\pi$进行了马尔可夫性的假设。即在状态$s$下采取的动作仅仅与当前状态有关，而与以前的状态序列无关。使用公式表示为：
+$$
+\pi(a|s) = P(A_t=a | S_t=s)
+$$
+同样的，对于价值函数$v_{\pi}(s)$也有同样的操作：
+$$
+v_{\pi}(s) = \mathbb{E}_{\pi}(G_t|S_t=s ) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+&hellip;|S_t=s)
+$$
+其中$G_t$代表在状态$s$下的reward，它是一个马尔可夫过程中从状态$s$开始采样直到终止状态时所有即时奖励的有衰减的和。</p>
+<h4 id="mdp的价值函数与贝尔曼方程">MDP的价值函数与贝尔曼方程</h4>
+<p>MDP中除了状态价值函数$v_{\pi}(s)$以外，还有动作价值函数$q_{\pi}(s,a)$,其表示的是动作$a$以及状态$s$联合对价值带来的影响。其计算公式为：
+$$
+q_{\pi}(s,a) = \mathbb{E}_{\pi}(G_t|S_t=s, A_t=a) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2}+&hellip;|S_t=s,A_t=a)
+$$
+根据状态价值函数的表达式，我们可以得出状态价值函数的递推式：
+$$
+v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_t=s)
+$$
+这条方程被称为贝尔曼方程。它表示当前状态的价值可以由该状态的奖励以及后续状态的价值按照一定的衰减比例计算而成。</p>
+<p>同样的方法，我们可以得到动作价值函数的贝尔曼方程:
+$$
+q_{\pi}(s,a) = \mathbb{E}_{\pi}(R_{t+1} + \gamma q_{\pi}(S_{t+1},A_{t+1}) | S_t=s, A_t=a)
+$$</p>
+<h4 id="状态价值函数与动作价值函数的递推关系">状态价值函数与动作价值函数的递推关系</h4>
+<p>根据动作价值函数以及状态价值函数的定义，可以得到他们的转化关系公式：
+$$
+v_{\pi}(s) = \sum\limits_{a \in A} \pi(a|s)q_{\pi}(s,a)
+$$
+即状态价值函数是动作价值函数基于给定策略$\pi$的期望。</p>
+<p>反过来，我们也可以使用状态价值函数表示动作价值函数：
+$$
+q_{\pi}(s,a) = R_s^a + \gamma \sum\limits_{s&rsquo; \in S}P_{ss&rsquo;}^av_{\pi}(s&rsquo;)
+$$
+即动作价值函数是即时奖励加上当前动作可能转移到的下一个状态的状态价值函数基于状态转移概率的有衰减的和。</p>
+<p>根据以上公式，我们可以分别得到动作价值函数以及状态价值函数的递推式：
+$$
+v_{\pi}(s) = \sum\limits_{a \in A} \pi(a|s)(R_s^a + \gamma \sum\limits_{s&rsquo; \in S}P_{ss&rsquo;}^av_{\pi}(s&rsquo;))
+$$</p>
+<p>$$
+q_{\pi}(s,a) = R_s^a + \gamma \sum\limits_{s&rsquo; \in S}P_{ss&rsquo;}^a\sum\limits_{a&rsquo; \in A} \pi(a'|s&rsquo;)q_{\pi}(s&rsquo;,a&rsquo;)
+$$</p>
+<h4 id="最优价值函数">最优价值函数</h4>
+<p>寻找最优策略可以通过最优的价值函数来完成。可以定义最优状态价值函数是所有策略下产生的众多状态价值函数中的最大者。即$v_{*}(s) = \max_{\pi}v_{\pi}(s)$。</p>
+<p>同理也可以定义最优动作价值函数是所有策略下产生的众多动作价值函数中的最大值：
+$$
+q_{*}(s,a) = \max_{\pi}q_{\pi}(s,a)
+$$
+对于最优的策略，基于动作价值函数我们可以定义为：
+$$
+\pi_{*}(a|s)= \begin{cases} 1 &amp; {a=\arg\max_{a \in A}q_{*}(s,a)}\ 0 &amp; {else} \end{cases}
+$$</p>
+<p>此时利用状态价值函数与动作价值函数之间的关系，也可以得到：
+$$
+v_{*}(s) = \max_{a}q_{*}(s,a)
+$$</p>
+</article><section class="article labels"><a class="category" href=/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/>强化学习</a></section><section class="article navigation"><p><a class="link" href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"><span class="li">&larr;</span>强化学习基础</a></p><p><a class="link" href="/post/%E4%B8%9C%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%83%85%E6%8A%A5%E5%AD%A6%E7%8E%AF%E7%BB%BC%E5%90%88%E6%83%85%E6%8A%A5%E5%AD%A6%E8%80%83%E5%AD%A6%E7%BB%8F%E9%AA%8C/"><span class="li">&rarr;</span>东京大学情报学环综合情报学考学经验</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
+</body>
+
+</html>

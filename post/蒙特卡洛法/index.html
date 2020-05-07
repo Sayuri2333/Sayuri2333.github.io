@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>蒙特卡洛法求解&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.c8cb6d3b67b62dd1cf735de3bfe336eb76f6084bdbbe8031095f142fa05b05040da7f976430b0cf9f42f5d5275db6789.css" integrity="sha384-yMttO2e2LdHPc13jv&#43;M263b2CEvbvoAxCV8UL6BbBQQNp/l2QwsM&#43;fQvXVJ122eJ"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">蒙特卡洛法求解</h1><p class="article date">Thursday, May 7, 2020</p></section><article class="article markdown-body"><h4 id="不基于模型的强化学习问题定义">不基于模型的强化学习问题定义</h4>
+<p>在动态规划一文中，我们提到强化学习的两个基本问题：预测问题与控制问题。在处理上述两种问题的时候，其状态转化概率矩阵$P$都是已知的，即MDP已知（MDP需要状态转化概率矩阵计算$P_{ss&rsquo;}^a$)，对于这样的问题，我们称为基于模型的强化学习问题。当事先并不知道模型状态转化矩阵时，强化学习的两个基本问题可以被描述为：（1）给定状态集$S$，动作集$A$，即时奖励$R$，衰减因子$\gamma$，给定策略$\pi$，求解该策略的状态价值函数$v(\pi)$；（2）给定状态集$S$，动作集$A$，即时奖励$R$，衰减因子$\gamma$，探索率$\epsilon$，求解最优的动作价值函数$q_*$以及最优策略$\pi_*$。本文使用的蒙特卡洛法就是上述不基于模型的强化学习问题。</p>
+<h4 id="蒙特卡洛法求解特点">蒙特卡洛法求解特点</h4>
+<p>蒙特卡洛法是一种近似求解问题的方法，它通过采样若干经历完整的状态序列（episode）来估计状态的真实价值。相比于动态规划法，其特点为不需要依赖于模型状态转化概率，且其从经历过的完整序列学习，完整的经历越多，学习的效果越好。</p>
+<h4 id="蒙特卡洛法求解强化学习预测问题">蒙特卡洛法求解强化学习预测问题</h4>
+<p>假设给定的策略$\pi$产生了一个完整的状态序列如下：
+$$
+S_1,A_1,R_2,S_2,A_2,&hellip;S_t,A_t,R_{t+1},&hellip;R_T, S_T
+$$
+马尔科夫决策过程中对于价值函数的定义为：
+$$
+v_{\pi}(s) = \mathbb{E}_{\pi}(G_t|S_t=s ) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+&hellip;|S_t=s)
+$$
+可以看出每个状态的价值函数$v$等于所有该状态收获在策略分布$\pi$下的期望。同时这个收获是通过后续的奖励与对应的衰减乘积后求和得到的。在蒙特卡洛法中，求一个状态对应的$v$，只需要求出所有完整序列中该状态出现时候的收获再取平均值即可近似求解。即：
+$$
+G_t =R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+&hellip;  \gamma^{T-t-1}R_{T}
+$$</p>
+<p>$$
+v_{\pi}(s) \approx average(G_t), s.t. S_t=s
+$$</p>
+<p>当一个状态在完整的状态序列中出现一次以上时，有两种考虑方法。第一种是仅仅把状态序列中第一次出现该状态时的$G(t)$纳入到收获平均值的计算中；另一种是针对一个状态序列中每次出现该状态，都计算对应的$G(t)$并纳入收获平均值的计算中。在完整的经历样本序列比较少的场景下第二种方法会更为适用。</p>
+<p>本算法可以使用累进更新平均值( incremental mean )进行优化：
+$$
+N(S_t) = N(S_t)  +1
+$$</p>
+<p>$$
+V(S_t) = V(S_t)  + \frac{1}{N(S_t)}(G_t -  V(S_t) )
+$$</p>
+<p>当数据量巨大时，$N(S_t)$可以使用常数系数$\alpha$替代：
+$$
+V(S_t) = V(S_t)  + \alpha(G_t -  V(S_t) )
+$$</p>
+<h4 id="蒙特卡洛法求解强化学习控制问题">蒙特卡洛法求解强化学习控制问题</h4>
+<p>蒙特卡洛法求解控制问题的思路和动态规划的思路相似，动态规划中在每轮迭代中先做策略评估，计算出$v_k(s)$,然后基于一定的方法（比如贪婪法）更新的当前策略$\pi$。</p>
+<p>和动态规划相比，蒙特卡洛法不同之处体现在三点：一是预测问题策略评估的方法不同，第二是蒙特卡洛法一般是优化最优动作价值函数$q_*$，而不是状态价值函数$v_*$。三是动态规划一般基于贪婪法更新策略。而蒙特卡洛法一般采用$\epsilon$-贪婪法进行更新。$\epsilon$-贪婪法先假设一个较小的$\epsilon$值，使用$1-\epsilon$的概率贪婪的选择目前认为是最大行为价值的行为，而使用$\epsilon$的概率随机的从所有行为中选择。 为了使算法可以收敛，一般$\epsilon$会随着算法的迭代过程逐渐减小，并趋于0。</p>
+<h4 id="蒙特卡洛法控制问题算法流程">蒙特卡洛法控制问题算法流程</h4>
+<p>输入：状态集$S$，动作集$A$，即时奖励$R$，衰减因子$\gamma$，探索率$\epsilon$</p>
+<p>输出：最优的动作价值函数$q_*$以及最优策略$\pi_*$</p>
+<ol>
+<li>
+<p>初始化所有的动作价值$Q(s,a) = 0$，状态次数$N(s,a) = 0$，采样次数$k=0$，随机初始化一个策略</p>
+</li>
+<li>
+<p>$k=k+1$，基于策略$\pi$进行第$k$次蒙特卡洛采样，得到一个完整的状态序列
+$$
+S_1,A_1,R_2,S_2,A_2,&hellip;S_t,A_t,R_{t+1},&hellip;R_T, S_T
+$$</p>
+</li>
+<li>
+<p>对于状态序列里出现的每一对状态行为对$(S_t, A_t)$，计算收获$G_t$，更新其计数$N(s,a)$和行为价值函数$Q(s,a)$：
+$$
+G_t =R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+&hellip;  \gamma^{T-t-1}R_{T}
+$$</p>
+<p>$$
+N(S_t, A_t) = N(S_t, A_t)  +1
+$$</p>
+<p>$$
+Q(S_t, A_t) = Q(S_t, A_t) + \frac{1}{N(S_t, A_t)}(G_t -  Q(S_t, A_t) )
+$$</p>
+</li>
+<li>
+<p>基于新计算出的动作价值，更新当前的策略：
+$$
+\epsilon = \frac{1}{k}
+$$</p>
+<p>$$
+\pi(a|s)= \begin{cases} \epsilon/m + 1- \epsilon &amp; {if; a^{*} = \arg\max_{a \in A}Q(s,a)}\ \epsilon/m &amp; {else} \end{cases}
+$$</p>
+</li>
+<li>
+<p>如果所有的$Q(s,a)$收敛，则有最优的动作价值函数$Q(s,a)$以及最优策略$\pi(a|s)$。</p>
+</li>
+</ol>
+<h4 id="蒙特卡洛法小结">蒙特卡洛法小结</h4>
+<p>蒙特卡洛法不像动态规划法需要考虑所有可能的后续状态，而且其计算也不需要事先知道环境转化模型，因此可以用于海量数据的复杂模型。其缺点在于每次采样都需要一个完整的状态序列。</p>
+</article><section class="article labels"><a class="category" href=/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/>强化学习</a></section><section class="article navigation"><p><a class="link" href="/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><span class="li">&rarr;</span>动态规划求解强化学习问题</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
+</body>
+
+</html>

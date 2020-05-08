@@ -7,15 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Thu, 07 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Q-learning算法</title>
+      <link>/post/q-learning/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/q-learning/</guid>
+      <description>Q-learning算法的引入 Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用</description>
+    </item>
+    
+    <item>
       <title>SARSA算法</title>
       <link>/post/sarsa/</link>
-      <pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/sarsa/</guid>
       <description>SARSA算法的引入 SARSA算法不需要环境的状态转化模型，是不基于模型的强化学习问题求解方法。对于它的控制问题的求解与蒙特卡洛法相似，即通</description>

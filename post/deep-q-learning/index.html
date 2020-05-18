@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Deep Q-Learning算法&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.c8cb6d3b67b62dd1cf735de3bfe336eb76f6084bdbbe8031095f142fa05b05040da7f976430b0cf9f42f5d5275db6789.css" integrity="sha384-yMttO2e2LdHPc13jv&#43;M263b2CEvbvoAxCV8UL6BbBQQNp/l2QwsM&#43;fQvXVJ122eJ"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">Deep Q-Learning算法</h1></section><article class="article markdown-body"><h4 id="价值函数的近似表示">价值函数的近似表示</h4>
+
+<p>之前介绍的强化学习方法使用的都是有限个状态集合$S$，而当遇到连续的状态时，则需要价值函数的近似表示。</p>
+
+<h4 id="价值函数的近似表示方法">价值函数的近似表示方法</h4>
+
+<p>价值函数的近似表示拥有几种方法。一是引入一个状态价值函数$\hat{v}$，这个函数由参数$w$表示，并接受状态$s$作为输入，计算后得到状态$s$的价值。即:
+<span  class="math">\(
+\hat{v}(s, w) \approx v_{\pi}(s)
+\)</span>
+类似的，引入一个动作价值函数$\hat{q}$，这个函数由参数$w$表示，并接受状态$s$与动作$a$作为输入，计算后得到动作价值。即：
+<span  class="math">\(
+\hat{q}(s,a,w) \approx q_{\pi}(s,a)
+\)</span>
+价值函数的近似表示通常使用神经网络。神经网络的使用主要有以下三种情况。</p>
+
+<p><figure><img src="E:HugoblogcontentimgDQL.jpg" alt=""></figure></p>
+
+<p>对于状态价值函数， 神经网络的输入是状态$s$的特征向量，输出是状态价值$\hat{v}(s, w)$。对于动作价值函数，有两种方法，一种是输入状态$s$的特征向量和动作$a$，输出对应的动作价值$\hat{q}(s,a,w)$，另一种是只输入状态$s$的特征向量，动作集合有多少个动作就有多少个输出$\hat{q}(s,a_i,w)$。这里隐含了我们的动作是有限个的离散动作。</p>
+
+<h4 id="deep-qlearning算法思路">Deep Q-Learning算法思路</h4>
+
+<p>Deep Q-Learning算法的基本思路来源于Q-learning。 但是和Q-Learning不同的地方在于，它的Q值的计算不是直接通过状态值$s$和动作来计算，而是通过上面讲到的Q网络来计算的。这个Q网络是一个神经网络，我们一般简称Deep Q-Learning为DQN。</p>
+
+<p>DQN的输入是状态s对应的状态向量$\phi(s)$， 输出是所有动作在该状态下的动作价值函数Q。Q网络可以是DNN，CNN或者RNN，没有具体的网络结构要求。</p>
+
+<p>DQN主要使用的技巧是经验回放（experience replay）,即将每次和环境交互得到的奖励与状态更新情况都保存起来，用于后面目标Q值的更新。</p>
+
+<p>通过经验回放得到的目标Q值和通过Q网络计算得到的Q值存在误差时，可以通过梯度反向传播来更新神经网络的参数$w$直到当$w$收敛。</p>
+
+<p>算法输入：迭代轮数$T$，状态特征维度$n$，动作集$A$，步长$\alpha$，衰减因子$\gamma$，探索率$\epsilon$，Q网络结构，批量梯度下降的样本数$m$。</p>
+
+<p>输出：Q网络参数</p>
+
+<ol>
+<li><p>随机初始化Q网络的所有参数$w$， 基于$w$初始化所有的状态和动作对应的价值$Q$。清空经验回放的集合$D$。</p></li>
+
+<li><p>for i from 1 to T，进行迭代。</p>
+
+<ol>
+<li><p>初始化S为当前状态序列的第一个状态, 拿到其特征向量$\phi(S)$</p></li>
+
+<li><p>在Q网络中使用$\phi(S)$作为输入，得到Q网络的所有动作对应的Q值输出。用ϵ−贪婪法在当前Q值输出中选择对应的动作A</p></li>
+
+<li><p>在状态$S$执行当前动作$A$,得到新状态$S'$对应的特征向量$\phi(S')$和奖励$R$,是否终止状态is_end</p></li>
+
+<li><p>将${\phi(S),A,R,\phi(S'),is_end}$这个五元组存入经验回放集合$D$</p></li>
+
+<li><p>$S=S'$</p></li>
+
+<li><p>从经验回放集合$D$中采样$m$个样本${\phi(S_j),A_j,R_j,\phi(S'_j),is_end_j}, j=1,2.,,,m$，计算当前Q值$y_j$：
+<span  class="math">\(
+y_j= \begin{cases} R_j& {is\_end_j\; is \;true}\\ R_j + \gamma\max_{a'}Q(\phi(S'_j),A'_j,w) & {is\_end_j \;is\; false} \end{cases}
+\)</span></p></li>
+
+<li><p>使用均方差损失函数,通过神经网络的梯度反向传播来更新Q网络的所有参数$w$</p></li>
+</ol>
+
+<p><span  class="math">\[\frac{1}{m}\sum\limits_{j=1}^m(y_j-Q(\phi(S_j),A_j,w))^2\]</span></p>
+
+<ol start="8">
+<li>如果$S'$是终止状态，当前轮迭代完毕，否则转到步骤2.2</li>
+</ol></li>
+</ol>
+
+<p>上述2.6以及2.7步骤中的Q值计算都要通过Q网络计算得到。实际应用中为了算法更好的收敛探索率需要随着迭代的进行而减小。</p>
+
+<h4 id="deep-qlearning算法实现">Deep Q-Learning算法实现</h4>
+
+<p>下面使用OpenAi Gym中的CartPole-v0游戏来作为算法实现的游戏。具体算法请参照我的<a href="https://github.com/Sayuri2333/reinforcement_learning">github</a>。</p>
+</article><section class="article navigation"><p><a class="link" href="/post/%E4%B9%A6%E7%9B%AE/"><span class="li">&larr;</span>强化学习入门资料</a></p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
+</body>
+
+</html>

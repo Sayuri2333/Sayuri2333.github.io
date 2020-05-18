@@ -93,5 +93,14 @@
       <description>阅读书目 PRML / 国内有非正式版翻译 Reinforcement learning: An Introduction / 有中文版 Artificial intelligence: A Modern Approach Part I-III / 有中文 翻译一般 比较general的书 Deep learning / 花书 Artificial Intelligence and Games / 有中文版 翻译质量还行</description>
     </item>
     
+    <item>
+      <title>Deep Q-Learning算法</title>
+      <link>/post/deep-q-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/deep-q-learning/</guid>
+      <description>价值函数的近似表示 之前介绍的强化学习方法使用的都是有限个状态集合$S$，而当遇到连续的状态时，则需要价值函数的近似表示。 价值函数的近似表示方</description>
+    </item>
+    
   </channel>
 </rss>

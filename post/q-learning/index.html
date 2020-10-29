@@ -1,50 +1,127 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Q-learning算法&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.c8cb6d3b67b62dd1cf735de3bfe336eb76f6084bdbbe8031095f142fa05b05040da7f976430b0cf9f42f5d5275db6789.css" integrity="sha384-yMttO2e2LdHPc13jv&#43;M263b2CEvbvoAxCV8UL6BbBQQNp/l2QwsM&#43;fQvXVJ122eJ"><body>
-    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
-<section id="header" class="site header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
-        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
-    <h1 class="article title">Q-learning算法</h1><p class="article date">Friday, May 8, 2020</p></section><article class="article markdown-body"><h4 id="q-learning算法的引入">Q-learning算法的引入</h4>
-<p>Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用$\epsilon$-贪婪法，而Q-learning使用的时贪婪法。</p>
-<h4 id="q-learning算法概述">Q-learning算法概述</h4>
-<p>首先基于状态$S$，用$\epsilon$-贪婪法先择动作$A$，然后执行动作$A$，得到奖励$R$，并进入状态$S'$，此时如果是SARSA算法，会继续基于状态$S'$使用$\epsilon$-贪婪法选择$A'$，但是Q-learning不同。</p>
-<p>Q-learning基于状态$S'$，使用贪婪法选择$A'$，也就是说，选择使$Q(S&rsquo;,a)$最大的$a$作为$A'$来更新动作价值函数。数学公式表示如下：
-$$
-Q(S,A) = Q(S,A) + \alpha(R+\gamma \max_aQ(S&rsquo;,a) - Q(S,A))
-$$
-此时选择的动作只会用于价值函数的更新，不会真正的执行。价值函数更新后，新的执行动作需要基于$S'$使用$\epsilon$-贪婪法重新得到。这一点也和SARSA有些不同。SARSA中价值函数更新使用的$A'$会作为下一阶段开始i时候的执行动作。</p>
-<h4 id="q-learning算法的流程">Q-learning算法的流程</h4>
-<p>算法输入：迭代轮数$T$，状态集$S$，动作集$A$，步长$\alpha$，衰减因子$\gamma$，探索率$\epsilon$</p>
-<p>输出：所有的状态和动作对应的价值$Q$</p>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Q-learning算法">
+<meta itemprop="description" content="Q-learning算法的引入 Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用">
+<meta itemprop="datePublished" content="2020-05-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-05-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="865">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Q-learning算法" />
+<meta property="og:description" content="Q-learning算法的引入 Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/q-learning/" />
+<meta property="article:published_time" content="2020-05-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Q-learning算法"/>
+<meta name="twitter:description" content="Q-learning算法的引入 Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Q-learning算法</title>
+	<link rel="stylesheet" href="https://example.com/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://example.com">SayuriBlog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://example.com/post/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://example.com/post/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Q-learning算法</h1>
+		<div class="content">
+			<h3 id="qlearning算法的引入">Q-learning算法的引入<a href="#qlearning算法的引入" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用<span  class="math">\(\epsilon\)</span>-贪婪法，而Q-learning使用的时贪婪法。</p>
+
+<h3 id="qlearning算法概述">Q-learning算法概述<a href="#qlearning算法概述" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>首先基于状态<span  class="math">\(S\)</span>，用<span  class="math">\(\epsilon\)</span>-贪婪法先择动作<span  class="math">\(A\)</span>，然后执行动作<span  class="math">\(A\)</span>，得到奖励<span  class="math">\(R\)</span>，并进入状态<span  class="math">\(S'\)</span>，此时如果是SARSA算法，会继续基于状态<span  class="math">\(S'\)</span>使用<span  class="math">\(\epsilon\)</span>-贪婪法选择<span  class="math">\(A'\)</span>，但是Q-learning不同。</p>
+
+<p>Q-learning基于状态<span  class="math">\(S'\)</span>，使用贪婪法选择<span  class="math">\(A'\)</span>，也就是说，选择使<span  class="math">\(Q(S',a)\)</span>最大的<span  class="math">\(a\)</span>作为<span  class="math">\(A'\)</span>来更新动作价值函数。数学公式表示如下：</p>
+
+<p><span  class="math">\[
+Q(S,A) = Q(S,A) + \alpha(R+\gamma \max_aQ(S',a) - Q(S,A))
+\]</span></p>
+
+<p>此时选择的动作只会用于价值函数的更新，不会真正的执行。价值函数更新后，新的执行动作需要基于<span  class="math">\(S'\)</span>使用<span  class="math">\(\epsilon\)</span>-贪婪法重新得到。这一点也和SARSA有些不同。SARSA中价值函数更新使用的<span  class="math">\(A'\)</span>会作为下一阶段开始i时候的执行动作。</p>
+
+<h3 id="qlearning算法的流程">Q-learning算法的流程<a href="#qlearning算法的流程" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>算法输入：迭代轮数<span  class="math">\(T\)</span>，状态集<span  class="math">\(S\)</span>，动作集<span  class="math">\(A\)</span>，步长<span  class="math">\(\alpha\)</span>，衰减因子<span  class="math">\(\gamma\)</span>，探索率<span  class="math">\(\epsilon\)</span></p>
+
+<p>输出：所有的状态和动作对应的价值<span  class="math">\(Q\)</span></p>
+
 <ol>
-<li>随机初始化所有的动作价值$Q$，对于终止状态其$Q$值为0</li>
+<li>随机初始化所有的动作价值<span  class="math">\(Q\)</span>，对于终止状态其<span  class="math">\(Q\)</span>值为0</li>
 <li>for i from 1 to T，进行迭代
+
 <ol>
-<li>初始化$S$为当前状态序列的第一个状态</li>
-<li>用$\epsilon$-贪婪法在当前状态$S$选择出动作$A$</li>
-<li>在状态S执行动作$A$，得到新状态$S'$以及奖励$R$</li>
-<li>更新价值函数$Q(S,A)$：$Q(S,A) + \alpha(R+\gamma \max_aQ(S&rsquo;,a) - Q(S,A))$</li>
-<li>$S = S'$</li>
-<li>如果$S'$是终止状态，当前轮迭代完毕，否则转到步骤2.2</li>
+<li>初始化<span  class="math">\(S\)</span>为当前状态序列的第一个状态</li>
+<li>用<span  class="math">\(\epsilon\)</span>-贪婪法在当前状态<span  class="math">\(S\)</span>选择出动作<span  class="math">\(A\)</span></li>
+<li>在状态S执行动作<span  class="math">\(A\)</span>，得到新状态<span  class="math">\(S'\)</span>以及奖励<span  class="math">\(R\)</span></li>
+<li>更新价值函数<span  class="math">\(Q(S,A)\)</span>：<span  class="math">\(Q(S,A) + \alpha(R+\gamma \max_aQ(S',a) - Q(S,A))\)</span></li>
+<li><span  class="math">\(S = S'\)</span></li>
+<li>如果<span  class="math">\(S'\)</span>是终止状态，当前轮迭代完毕，否则转到步骤2.2</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h4 id="q-learning算法实现">Q-learning算法实现</h4>
-<p>同样使用Q-learning算法解决了Windy Gridworld的问题，具体代码见我的<a href="https://github.com/Sayuri2333/reinforcement_learning"target="_blank">github</a>。</p>
-</article><section class="article labels"><a class="category" href=/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/>强化学习</a></section><section class="article navigation"><p><a class="link" href="/post/sarsa/"><span class="li">&rarr;</span>SARSA算法</a class="link">
-    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
-</code>
-<section id="footer" class="footer"><div class="footer-wrap">
-    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
-    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
-        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank">Notepadium</a></p>
-</div>
-</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script></div>
+
+<h3 id="qlearning算法实现">Q-learning算法实现<a href="#qlearning算法实现" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>同样使用Q-learning算法解决了Windy Gridworld的问题，具体代码见我的<a href="https://github.com/Sayuri2333/reinforcement_learning">github</a>。</p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://example.com"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://example.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+	</footer>
+
+
+
+	<script src="https://example.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
 </body>
 
 </html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="重要性采样的问题">
+<meta itemprop="description" content="重要性采样在策略梯度类算法的应用 PPO算法是重要性采样在策略梯度类算法中应用的典型成果。策略梯度类算法通常以最大化期望奖励（Expected">
+<meta itemprop="datePublished" content="2020-10-29T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-10-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1351">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="重要性采样的问题" />
+<meta property="og:description" content="重要性采样在策略梯度类算法的应用 PPO算法是重要性采样在策略梯度类算法中应用的典型成果。策略梯度类算法通常以最大化期望奖励（Expected" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/ddpg%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2020-10-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="重要性采样的问题"/>
+<meta name="twitter:description" content="重要性采样在策略梯度类算法的应用 PPO算法是重要性采样在策略梯度类算法中应用的典型成果。策略梯度类算法通常以最大化期望奖励（Expected"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>重要性采样的问题</title>
+	<link rel="stylesheet" href="https://example.com/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://example.com">SayuriBlog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://example.com/post/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://example.com/post/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>重要性采样的问题</h1>
+		<div class="content">
+			<h3 id="重要性采样在策略梯度类算法的应用">重要性采样在策略梯度类算法的应用<a href="#重要性采样在策略梯度类算法的应用" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>PPO算法是重要性采样在策略梯度类算法中应用的典型成果。策略梯度类算法通常以最大化期望奖励（Expected Reward）为目标：</p>
+
+<p><span  class="math">\[
+\bar{R}_{\theta}=\sum R(\tau) p_{\theta}(\tau)=\int R(\tau) p_{\theta}(\tau) d \tau=\mathrm{E}_{\mathrm{r} \sim p_{0}(t)}[R(\tau)]
+\]</span></p>
+
+<p>求导后，梯度可以化为以下形式：</p>
+
+<p><span  class="math">\[
+\begin{aligned}
+\nabla \bar{R}_{\theta} &=\sum_{\tau} R(\tau) \nabla p_{\theta}(\tau)=\sum_{\tau} R(\tau) {p_{\theta}(\tau) \frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau)}} \\
+&=\sum R(\tau) p_{\theta}(\tau) \nabla \operatorname{log}\left(p_{\theta}(\tau)\right)=\mathrm{E}_{\tau \sim p_{\theta}(\tau)}\left[R(\tau) \nabla \log \left(p_{\theta}(\tau)\right)\right]
+\end{aligned}
+\]</span></p>
+
+<p>对上式使用重要性采样后，梯度化为以下形式：</p>
+
+<p><span  class="math">\[
+\nabla \bar{R}_{\theta}=E_{{\tau \sim p_{\theta^{\prime}}(\tau)}}\left[\frac{p_{\theta}(\tau)}{p_{\theta^{\prime}}(\tau)} R(\tau) \nabla \log p_{\theta}(\tau)\right]
+\]</span></p>
+
+<p>由于<span  class="math">\(p_{\theta}(\tau)\)</span>中包含的状态转移概率与策略无关，因此对上式化简并积分后，可以得到经过重要性采样的目标函数（Objective）：</p>
+
+<p><span  class="math">\[
+\bar{R}_{\theta}=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} \mid s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} \mid s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]
+\]</span></p>
+
+<p>由于在策略前后分布差距较大时会为目标函数引入较大方差，PPO算法引入了两种解决方案：将两种分布的KL散度作为惩罚项（penalty）引入目标函数；使用clip函数对原目标函数的值进行限制。
+如下所示。</p>
+
+<p><span  class="math">\[
+L^{C L I P}(\theta)=\hat{\mathbb{E}}_{t}\left[\min \left(r_{t}(\theta) \hat{A}_{t}, \operatorname{clip}\left(r_{t}(\theta), 1-\epsilon, 1+\epsilon\right) \hat{A}_{t}\right)\right]
+\]</span></p>
+
+<p>在PPO算法中，重要性采样技术将原来只能使用on-policy训练的策略梯度方法修改成能根据不同策略产生的样本进行训练的方法。</p>
+
+<h3 id="ddpg为什么不需要重要性采样">DDPG为什么不需要重要性采样<a href="#ddpg为什么不需要重要性采样" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>DDPG不需要重要性采样的原因是其使用了确定性策略梯度。对于PG算法，其梯度为：</p>
+
+<p><span  class="math">\[
+\begin{aligned}
+\nabla_{\theta} J\left(\pi_{\theta}\right) &=\int_{\mathcal{S}} \rho^{\pi}(s) \int_{\mathcal{A}} \nabla_{\theta} \pi_{\theta}(a \mid s) Q^{\pi}(s, a) \mathrm{d} a \mathrm{d} s \\
+&=\mathbb{E}_{s \sim \rho^{\pi}, a \sim \pi_{\theta}}\left[\nabla_{\theta} \log \pi_{\theta}(a \mid s) Q^{\pi}(s, a)\right]
+\end{aligned}
+\]</span></p>
+
+<p>但是因为DDPG使用的是确定性策略梯度，其动作可以表示为<span  class="math">\(\mu_{\theta}(s)\)</span>，因此对策略梯度的目标函数可以化为：</p>
+
+<p><span  class="math">\[
+\begin{aligned}
+J\left(\mu_{\theta}\right) &=\int_{\mathcal{S}} \rho^{\mu}(s) r\left(s, \mu_{\theta}(s)\right) \mathrm{d} s \\
+&=\mathbb{E}_{s \sim \rho^{\mu}}\left[r\left(s, \mu_{\theta}(s)\right)\right]
+\end{aligned}
+\]</span></p>
+
+<p>从上式可以看出，因为动作可以表示为状态的确定性函数，对动作的积分可以省去。因此，其策略梯度可以化为：</p>
+
+<p><span  class="math">\[
+\begin{aligned}
+\nabla_{\theta} J\left(\mu_{\theta}\right) &=\left.\int_{\mathcal{S}} \rho^{\mu}(s) \nabla_{\theta} \mu_{\theta}(s) \nabla_{a} Q^{\mu}(s, a)\right|_{a=\mu_{\theta}(s)} \mathrm{d} s \\
+&=\mathbb{E}_{s \sim \rho^{\mu}}\left[\left.\nabla_{\theta} \mu_{\theta}(s) \nabla_{a} Q^{\mu}(s, a)\right|_{a=\mu_{\theta}(s)}\right]
+\end{aligned}
+\]</span></p>
+
+<h3 id="dqn为什么不用重要性采样">DQN为什么不用重要性采样<a href="#dqn为什么不用重要性采样" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>DQN类型的方法与PG系列的方法不同，PG系列的方法是以最大化期望奖励为目标，而DQN系列方法是为了拟合出Bellman最优函数（Bellman Optimality Equation）。</p>
+
+<p>Bellman最优函数的状态价值版本如下：</p>
+
+<p><span  class="math">\[
+V^{\pi}(s)=E_{s^{\prime} \sim p(s, \pi(s))}\left[r\left(s, a, s^{\prime}\right)+\gamma V^{\pi}\left(s^{\prime}\right)\right]
+\]</span></p>
+
+<p>Bellman最优函数的动作价值版本如下：</p>
+
+<p><span  class="math">\[
+Q(s, a)=E_{s^{\prime} \sim p(s, a)}\left[r\left(s, a, s^{\prime}\right)+\gamma\max _{a^{\prime}} Q\left(s^{\prime}, a^{\prime}\right)\right]
+\]</span></p>
+
+<p>根据随机收敛理论，如果<span  class="math">\(X_n\)</span>的更新过程如下，其中<span  class="math">\(\varepsilon_{n}\)</span>为有界的随机变量，期望是<span  class="math">\(E\)</span>：</p>
+
+<p><span  class="math">\[
+X_{n+1}=X_{n}+B_{n}\left(\varepsilon_{n}-X_{n}\right)
+\]</span></p>
+
+<p>且</p>
+
+<p><span  class="math">\[
+0 \leq B_{n}<1, \quad \sum_{i=1}^{\infty} B_{n}=\infty, \quad \sum_{i=1}^{\infty} B_{n}^{2}<\infty
+\]</span></p>
+
+<p>那么当<span  class="math">\(n \rightarrow \infty\)</span>时，<span  class="math">\(X_n\)</span>将以概率1收敛到<span  class="math">\(E\)</span>。</p>
+
+<p>将上式的<span  class="math">\(\varepsilon_{n}\)</span>替换为<span  class="math">\(r\left(s, a, s^{\prime}\right)+\gamma\max _{a^{\prime}} Q\left(s^{\prime}, a^{\prime}\right)\)</span>就得到了TD-based的Q-learning方法。</p>
+
+<p><span  class="math">\(Q(s, a)\)</span>期望中所涉及的概率为<span  class="math">\(p\left(s^{\prime} \mid s, a\right)\)</span>，因为动作<span  class="math">\(a\)</span>在一开始已经被决定，不管是由什么策略产生，涉及的概率均不存在生成<span  class="math">\(a\)</span>的概率，而<span  class="math">\(p\left(s^{\prime} \mid s, a\right)\)</span>由环境决定，对于不同策略具有相同的取值，因此不需要重要性采样。</p>
+
+<p>而对于2 step Q-learning来说</p>
+
+<p><span  class="math">\[
+Q(s, a)=E_{s^{\prime} \sim p(s, a), s^{\prime \prime} \sim p\left(s^{\prime}, \pi\left(s^{\prime}\right)\right)}\left[r\left(s, a, s^{\prime}\right)+\gamma r\left(s^{\prime}, a^{\prime}, s^{\prime \prime}\right)+\gamma^{2} \max _{a^{\prime \prime}} Q\left(s^{\prime \prime}, a^{\prime \prime}\right)\right]
+\]</span></p>
+
+<p>此期望涉及的概率为<span  class="math">\(p\left(s^{\prime} \mid s, a\right) \pi\left(a^{\prime} \mid s^{\prime}\right) p\left(s^{\prime \prime} \mid s^{\prime}, a^{\prime}\right)\)</span>，其中包含策略<span  class="math">\(\pi\)</span>，因此如果使用<span  class="math">\(\epsilon - greedy\)</span>方法产生动作<span  class="math">\(a\)</span>的话，就要乘上重要性因子。</p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://example.com"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://example.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+	</footer>
+
+
+
+	<script src="https://example.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Dueling DQN算法">
+<meta itemprop="description" content="Dueling DQN的改进 Dueling DQN算法主要针对传统DQN算法对于状态价值的评估做出了改进。在传统的DQN算法中，Q网络能够预测给定\((s,a)\)的状">
+<meta itemprop="datePublished" content="2020-10-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-10-30T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="924">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Dueling DQN算法" />
+<meta property="og:description" content="Dueling DQN的改进 Dueling DQN算法主要针对传统DQN算法对于状态价值的评估做出了改进。在传统的DQN算法中，Q网络能够预测给定\((s,a)\)的状" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sayuri2333.github.io/post/duelingdqn/" />
+<meta property="article:published_time" content="2020-10-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dueling DQN算法"/>
+<meta name="twitter:description" content="Dueling DQN的改进 Dueling DQN算法主要针对传统DQN算法对于状态价值的评估做出了改进。在传统的DQN算法中，Q网络能够预测给定\((s,a)\)的状"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Dueling DQN算法</title>
+	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://sayuri2333.github.io/post/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Dueling DQN算法</h1>
+		<div class="content">
+			<h3 id="dueling-dqn的改进">Dueling DQN的改进<a href="#dueling-dqn的改进" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>Dueling DQN算法主要针对传统DQN算法对于状态价值的评估做出了改进。在传统的DQN算法中，Q网络能够预测给定<span  class="math">\((s,a)\)</span>的状态价值，但是却无法针对状态本身的价值做出评估。这样的评估在某些无论做出任何动作都无法有效影响价值的时候相当有用。同时因为Dueling DQN算法将value function以及advantage function分割，如果网络中新增新的动作这种结构也能很快适应。由于Dueling DQN算法只是针对网络结构做出调整，因此也能与其他方法共同使用。</p>
+
+<h3 id="dueling-dqn算法说明">Dueling DQN算法说明<a href="#dueling-dqn算法说明" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>Dueling DQN算法引入了优势函数（advantage function）的概念。对于定义：</p>
+
+<p><span  class="math">\[
+Q^{\pi}(s, a)=\mathbb{E}\left[R_{t} \mid s_{t}=s, a_{t}=a, \pi\right]
+\]</span></p>
+
+<p><span  class="math">\[
+V^{\pi}(s)=\mathbb{E}_{a \sim \pi(s)}\left[Q^{\pi}(s, a)\right]
+\]</span></p>
+
+<p>我们设置优势函数为：</p>
+
+<p><span  class="math">\[
+A^{\pi}(s, a)=Q^{\pi}(s, a)-V^{\pi}(s)
+\]</span></p>
+
+<p>通过使用Q function减去value function，优势函数能够衡量某个状态下指定动作对局面影响的方向和大小。同时对于优势函数，有：</p>
+
+<p><span  class="math">\[
+\mathbb{E}_{a \sim \pi(s)}\left[A^{\pi}(s, a)\right]=0
+\]</span></p>
+
+<p>通过引入优势函数，Dueling DQN算法将Q网络的输出改为了以下公式：</p>
+
+<p><span  class="math">\[
+Q(s, a ; \theta, \alpha, \beta)=V(s ; \theta, \beta)+A(s, a ; \theta, \alpha)
+\]</span></p>
+
+<p>但是上述公式存在一个问题，那就是缺乏可辨识性（identifiability），也就是说给定一个Q值，我们无法分解出唯一的V值和A值。 举个例子，把一个常量加到V中，并且从A中减去该常量，那么Dueling DQN仍输出相同的Q值。这个unidentifiable问题会严重地降低网络性能。也就是说，V不能反映state值，A不能反映advantage值。</p>
+
+<p>为了解决这个问题，我们可以尝试将<span  class="math">\(Q(s, a* ; \theta, \alpha, \beta)\)</span>与<span  class="math">\(V(s ; \theta, \beta)\)</span>对齐，其中<span  class="math">\(a*\)</span>为最优动作。即使得：</p>
+
+<p><span  class="math">\[
+Q(s, a* ; \theta, \alpha, \beta) = V(s ; \theta, \beta)
+\]</span></p>
+
+<p>为了达成上述对齐方式，我们可以令</p>
+
+<p><span  class="math">\[
+\begin{array}{l}
+Q(s, a ; \theta, \alpha, \beta)=V(s ; \theta, \beta)+\quad\left(A(s, a ; \theta, \alpha)-\max _{a^{\prime} \in|\mathcal{A}|} A\left(s, a^{\prime} ; \theta, \alpha\right)\right)
+\end{array}
+\]</span></p>
+
+<p>使得当取得最优动作时优势函数部分为0。</p>
+
+<p>但是由于max函数不好求导，在优化时不够平滑，因此论文中提出了下式改进：</p>
+
+<p><span  class="math">\[
+\begin{array}{l}
+Q(s, a ; \theta, \alpha, \beta)=V(s ; \theta, \beta)+\quad\left(A(s, a ; \theta, \alpha)-\frac{1}{|\mathcal{A}|} \sum_{a^{\prime}} A\left(s, a^{\prime} ; \theta, \alpha\right)\right)
+\end{array}
+\]</span></p>
+
+<p>虽然此时V和A的值都有偏差，但是相对于减去最大值，减去期望的方式能使得优化更为平滑。</p>
+
+<h3 id="dueling-dqn算法流程">Dueling DQN算法流程<a href="#dueling-dqn算法流程" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>基本同Double DQN算法，只是改变了网络结构和优化目标。</p>
+
+<p>具体Python实现参考<a href="https://github.com/Sayuri2333/reinforcement_learning">我的GitHub</a>。</p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+	</footer>
+
+
+
+	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

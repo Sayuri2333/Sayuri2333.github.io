@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Thu, 29 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dueling DQN算法</title>
+      <link>https://sayuri2333.github.io/post/duelingdqn/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/duelingdqn/</guid>
+      <description>Dueling DQN的改进 Dueling DQN算法主要针对传统DQN算法对于状态价值的评估做出了改进。在传统的DQN算法中，Q网络能够预测给定\((s,a)\)的状</description>
+    </item>
     
     <item>
       <title>Double DQN算法</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</guid>
       <description>强化学习基本要素 环境状态\(S\), t时刻环境的状态\(S_t\)是它的环境状态集中的某一个状态。 个体动作\(A\)， t时刻个体采取的动作\</description>
-    </item>
-    
-    <item>
-      <title>马尔可夫决策过程</title>
-      <link>https://sayuri2333.github.io/post/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/</link>
-      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/</guid>
-      <description>引入马尔可夫决策过程(MDP) 在强化学习基础介绍的强化学习要素中，状态转移概率\(P_{ss&#39;}^a\)不仅与上一个状态有关，也与之前所有状</description>
     </item>
     
   </channel>

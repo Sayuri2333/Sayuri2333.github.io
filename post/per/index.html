@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Prioritized Experience Replay">
+<meta itemprop="description" content="PER的由来 在PER之前，像DQN（Nature 2015）以及Double DQN等Deep Q-learning方法都是通过经验回放的手段进行">
+<meta itemprop="datePublished" content="2020-10-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-10-30T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1997">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Prioritized Experience Replay" />
+<meta property="og:description" content="PER的由来 在PER之前，像DQN（Nature 2015）以及Double DQN等Deep Q-learning方法都是通过经验回放的手段进行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sayuri2333.github.io/post/per/" />
+<meta property="article:published_time" content="2020-10-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Prioritized Experience Replay"/>
+<meta name="twitter:description" content="PER的由来 在PER之前，像DQN（Nature 2015）以及Double DQN等Deep Q-learning方法都是通过经验回放的手段进行"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Prioritized Experience Replay</title>
+	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://sayuri2333.github.io/post/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Prioritized Experience Replay</h1>
+		<div class="content">
+			<h3 id="per的由来">PER的由来<a href="#per的由来" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>在PER之前，像DQN（Nature 2015）以及Double DQN等Deep Q-learning方法都是通过经验回放的手段进行目标Q值的计算的。在采样的时候对于经验回放池中的所有transition，被采样到的概率都是相等的。</p>
+
+<p>但是上述方法可能在某些情况下会非常影响训练效率。在PER的论文中提出了BLIND CLIFFWALK测试环境，其奖励十分稀疏，假设有<span  class="math">\(n\)</span>个状态，在随机选择的动作序列中只有<span  class="math">\(2^{-n}\)</span>左右的概率才能得到第一个非零奖赏。在这种情况下，对于模型优化最相关的transition只能隐藏在众多的失败尝试中。</p>
+
+<p>优先经验回放可以让对学习过程更有用的样本以更高的频率回放，其中对学习过程的作用使用时序差分误差（TD-error）的大小来衡量。 通过这种方式可以加快收敛速度。</p>
+
+<h3 id="per的方法选择">PER的方法选择<a href="#per的方法选择" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>TD-error表示了当前价值函数输出的动作价值与对该动作价值的估计值之间的差异。越大的TD-error表示当前价值函数的输出越不准确，也就暗示可以从该样本中学到更多。由于新生成的样本不知道其TD-error，所以把它放在第一位，以保证至少回放一次，之后每次都回放TD-error最大的样本。</p>
+
+<p>但是单独的使用TD-error来做贪婪优先经验回放（greedy TD-error prioritization）存在许多问题：</p>
+
+<blockquote>
+<p>第一，为了避免在整个经验池上更新TD-error, 只有被重放的经验的TD-error被更新，这样就会导致TD-error较小的样本在第一次被回放之后很久都不会被重新回放（在参数更新之后此样本的TD-error可能会变大，然而由于不更新，它会一直被认为很小）； 第二，对噪声敏感（例如奖励是随机的时候或者在噪声影响下，某些经验的TD-error可能始终不会减小，进而导致其不断被重放），bootstrapping会进一步加剧这个问题，因为在bootstrapping中近似函数的误差也是噪声的一种。最后，贪婪优先回放的样本会集中在一个小范围内，因为在非线性近似中，TD-error的缩小是很慢的，开始TD-error大的样本可能会被回放很多次，这种多样性的缺失容易导致过拟合（over-fitting）的产生。</p>
+</blockquote>
+
+<p>为了解决上述问题，作者提出了Rank-based prioritization以及Proportional prioritization两种方法。</p>
+
+<p>Rank-based方法顾名思义，就是根据经验回放池中各个transition的TD-error的值进行排序，根据排名来确定被选定概率的方法。具体如下：</p>
+
+<p><span  class="math">\[
+p_{i}=\frac{1}{\operatorname{rank}(\mathrm{i})}
+\]</span></p>
+
+<p>其中<span  class="math">\(rank(i)\)</span>是经验回放池中根据TD-error排行的第<span  class="math">\(i\)</span>个transition的位置。通过这种方式也可以实现batch-size sampling，可以将排名段分成几个等概率区间，再在各个等概率区间里面均匀采样。比如说，假设experience replay大小为100，batch size为3，那么就事先通过计算，将100分为3个等概率区间（e.g., A:1-20，B:21-50, C:51-100），之后就在A、B和C区间内分别做均匀采样，最后取得3个transition。</p>
+
+<p>在Proportional prioritization方法中，transition被选择的概率正比于其TD-error的值。概率<span  class="math">\(p_{i}\)</span>的表达式如下：</p>
+
+<p><span  class="math">\[
+p_{i}=\left|\delta_{i}\right|+\epsilon
+\]</span></p>
+
+<p>其中<span  class="math">\(\delta_{i}\)</span>为TD-error，加入<span  class="math">\(\epsilon\)</span>防止出现概率为0的情况。在实际实现过程中会使用SumTree结构降低搜索复杂度。详情请<a href="https://jaromiru.com/2016/11/07/lets-make-a-dqn-double-learning-and-prioritized-experience-replay/">参考此处</a>。</p>
+
+<p>Proportional prioritization方法较为准确，但可能会对outlier较为敏感，Rank-based prioritization方法相对没有定量的考虑TD-error的值，但是具有更好的鲁棒性。</p>
+
+<h3 id="重要性采样">重要性采样<a href="#重要性采样" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>如之前的博文所说，Q-learning算法通常以拟合Bellman最优函数为目标：</p>
+
+<p><span  class="math">\[
+Q_{\pi}(s, a)=R(s, a)+\gamma \mathbb{E}_{s^{\prime} \sim p(s, a)}\left[\max _{a^{\prime}} Q_{\pi}\left(s^{\prime}, a^{\prime}\right)\right]
+\]</span></p>
+
+<p>通过大量的采样，我们可以使得到的状态<span  class="math">\(s^{\prime}\)</span>逼近其分布<span  class="math">\(p(s, a)\)</span>。由于在DQN算法中经验回放池的采样是等概率随机的，因此不会为上述式子的计算引入偏差。但是当使用PER进行采样时，因为对于transition的采样概率不再是相等的，所以计算出来的结果也有了偏差。</p>
+
+<p>为了消去偏差，我们使用重要性采样。其过程如下：</p>
+
+<p><span  class="math">\[
+E_{x \sim p}[f(x)]=\int f(x) p(x) d x=\int f(x) \frac{p(x)}{q(x)} q(x) d x=E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]
+\]</span></p>
+
+<p>将<span  class="math">\(p(x)=1 / N\)</span>以及<span  class="math">\(q(x)=P(j)\)</span>代入后，就能得到各个transition的重要性采样权重：</p>
+
+<p><span  class="math">\[
+\omega_{j}=\left(\frac{1}{N} \cdot \frac{1}{P(j)}\right)^{\beta}
+\]</span></p>
+
+<p>其中<span  class="math">\(\beta\)</span>用来调节bias修正程度（学习的初始阶段有bias也没所谓，但在后期就要消除bias）。</p>
+
+<p>将权重归一化后得到：</p>
+
+<p><span  class="math">\[
+\omega_{j}=\frac{(N \cdot P(j))^{-\beta}}{\max _{i} \omega_{i}}
+\]</span></p>
+
+<h3 id="算法流程">算法流程<a href="#算法流程" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>算法流程参考<a href="https://www.cnblogs.com/pinard/p/9797695.html">Pinard的博客</a>。</p>
+
+<p>Python实现参考<a href="https://github.com/Sayuri2333/reinforcement_learning">我的Github</a>。</p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+	</footer>
+
+
+
+	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

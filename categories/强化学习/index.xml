@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wine Quality Prediction With Random Forest</title>
+      <link>https://sayuri2333.github.io/post/solve_project/</link>
+      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/solve_project/</guid>
+      <description>Introduction For winemakers, it is very important to know how to judge the quality of wine by its chemical components. In this report, we analyze the white wine dataset, use random forest algorithm and logistic regression algorithm to build models to distinguish the quality of wine, and determine the importance of each chemical component for wine quality judgment by its weights in both algorithm. Exploratory Data Analysis First import the</description>
+    </item>
     
     <item>
       <title>Dueling DQN算法</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95/</guid>
       <description>不基于模型的强化学习问题定义 在动态规划一文中，我们提到强化学习的两个基本问题：预测问题与控制问题。在处理上述两种问题的时候，其状态转化概率矩</description>
-    </item>
-    
-    <item>
-      <title>动态规划求解强化学习问题</title>
-      <link>https://sayuri2333.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
-      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
-      <description>动态规划与强化学习的关系 动态规划的关键点在于：（1）问题的最优解可以由若干个小问题的最优解构成，即通过寻找子问题的最优解可以得到问题的最优解</description>
     </item>
     
   </channel>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Wine Quality Prediction With Random Forest">
+<meta itemprop="description" content="Introduction For winemakers, it is very important to know how to judge the quality of wine by its chemical components. In this report, we analyze the white wine dataset, use random forest algorithm and logistic regression algorithm to build models to distinguish the quality of wine, and determine the importance of each chemical component for wine quality judgment by its weights in both algorithm. Exploratory Data Analysis First import the">
+<meta itemprop="datePublished" content="2021-01-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1169">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Wine Quality Prediction With Random Forest" />
+<meta property="og:description" content="Introduction For winemakers, it is very important to know how to judge the quality of wine by its chemical components. In this report, we analyze the white wine dataset, use random forest algorithm and logistic regression algorithm to build models to distinguish the quality of wine, and determine the importance of each chemical component for wine quality judgment by its weights in both algorithm. Exploratory Data Analysis First import the" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sayuri2333.github.io/post/solve_project/" />
+<meta property="article:published_time" content="2021-01-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wine Quality Prediction With Random Forest"/>
+<meta name="twitter:description" content="Introduction For winemakers, it is very important to know how to judge the quality of wine by its chemical components. In this report, we analyze the white wine dataset, use random forest algorithm and logistic regression algorithm to build models to distinguish the quality of wine, and determine the importance of each chemical component for wine quality judgment by its weights in both algorithm. Exploratory Data Analysis First import the"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Wine Quality Prediction With Random Forest</title>
+	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://sayuri2333.github.io/post/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Wine Quality Prediction With Random Forest</h1>
+		<div class="content">
+			<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>For winemakers, it is very important to know how to judge the quality of wine by its chemical components. In this report, we analyze the white wine dataset, use random forest algorithm and logistic regression algorithm to build models to distinguish the quality of wine, and determine the importance of each chemical component for wine quality judgment by its weights in both algorithm.</p>
+
+<h2 id="exploratory-data-analysis">Exploratory Data Analysis<a href="#exploratory-data-analysis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>First import the dataset and observe the value and range of each column feature of the data set. The white wine dataset contains a total of 11 metrics of chemical composition and a column indicating the quality of the wine. All indicators are stored in the dataset in numeric form and have different ranges of values.</p>
+
+<h3 id="analyze-target-value">Analyze Target Value<a href="#analyze-target-value" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>We then analyzed the distribution of wine quality. The histogram below shows that wines of average quality (scores between 5 and 7) make up the majority of the data set, while wines of very poor quality (scores less than 4) and excellent quality (scores greater than 8) are less common. For quantitative discussions, we define wines with scores of 6 or more as high quality and wines with scores less than 6 as low quality.</p>
+
+<p><figure><img src="/image/output_8_2.png" alt="png"></figure></p>
+
+<h3 id="analyze-features">Analyze Features<a href="#analyze-features" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>Next, we perform an exploratory analysis of the metrics in the dataset. First, we check whether the metrics contain missing values.</p>
+<pre><code>fixed acidity           False
+volatile acidity        False
+citric acid             False
+residual sugar          False
+chlorides               False
+free sulfur dioxide     False
+total sulfur dioxide    False
+density                 False
+pH                      False
+sulphates               False
+alcohol                 False
+quality                 False
+dtype: bool</code></pre>
+<p>Since there is no missing value in the dataset, we use box plot to observe the general distribution of each metrics. As can be seen from the box plot below, the distribution of alcohol content in each wine is relatively concentrated, but there are great differences in metrics such as chlorides and volatile acid. Because there are many outliers in these metrics, the accuracy of logistic regression algorithm may be relatively low.</p>
+
+<p><figure><img src="/image/output_12_1.png" alt="png"></figure></p>
+
+<h3 id="correlation-analysis">Correlation Analysis<a href="#correlation-analysis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>According to the data distribution of each metric in different quality white wine, the metric with obvious differentiation can be roughly identified. As can be seen from the box plot below, the difference of alcohol content is the most obvious among different quality white wines, and high quality wines usually contain more alcohol. Also, the overall pH tends to rise as the quality of the wine improves. However, there are many outliers in the pH metric, so it is difficult to be used as the basis for judging the quality of wine.</p>
+
+<p><figure><img src="/image/output_14_0.png" alt="png"></figure></p>
+
+<p>We can use Pearson correlation coefficients for a more detailed analysis of the linear relationship between the individual metrics. The heat map below shows the values of the Pearson correlation coefficients between the metrics. It can be seen that density has a strong correlation with residual sugar, alcohol content and total sulfur dioxide. This makes sense, since the density of white wines is originally determined by the type and content of chemicals in the wine. The last column shows the Pearson correlation coefficients between white wine quality and all the metrics. It shows that there may exist linear relationship between white wine quality and alcohol as well as densityï¼Œwhich means these two metrics are important criteria for judging the quality of wine. It also shows that critic acid and free sulfur dioxide do not seem to have a linear correlation with wine quality.</p>
+
+<p><figure><img src="/image/output_16_1.png" alt="png"></figure></p>
+
+<p>We use the <strong>Maximum Information Coefficient(MIC)</strong> to detect whether there is a nonlinear or periodic relationship between each metric and the quality of white wine. The results show that alcohol and density have maximum MIC value, which is consistent with the conclusion made from Pearson correlation coefficient. <strong>So it is very likely that alcohol and density are the most important factors to measure the quality of wine.</strong> Besides, fixed acid and sulfate have the minimum MIC value. Because the conclusion(on the unrelated metrics) of MIC measurement is different from that of Pearson correlation coefficient, no metric is excluded in the model construction.</p>
+<pre><code>Maximal information coefficient
+fixed acidity 0.027
+volatile acidity 0.065
+citric acid 0.065
+residual sugar 0.077
+chlorides 0.082
+free sulfur dioxide 0.064
+total sulfur dioxide 0.086
+density 0.156
+pH 0.035
+sulphates 0.030
+alcohol 0.147</code></pre>
+<h2 id="data-preprocessing">Data Pre-processing<a href="#data-preprocessing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>Before building model, we seperate the data into training set with 80% of original data and test set with 20% of the original data. In training set, we have 1312 samples of low quality wine and 2606 samples of high quality wine. In order to solve the imbalanced classification problem, we use SMOTE algorithm to oversample the minority class. After pre-processing, we have the same number of samples in both low quality wine class and high quality wine class.</p>
+<pre><code>number of samples in low quality wine(0) and high quality wine(1): 
+0    1312
+1    2606
+Name: 0, dtype: int64
+
+
+0    2606
+1    2606
+Name: 0, dtype: int64</code></pre>
+<h2 id="logistic-regression">Logistic Regression<a href="#logistic-regression" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>When building model using logistic regression algorithm, we use <code>sklearn.preprocessing.StandardScaler</code> to normalize the data, and use <code>sklearn.model_selection.GridSearchCV</code> to find the best parameter. After training, logistic regression algorithm achieve 0.761 in accuracy score and 0.831 in f1 score.</p>
+<pre><code>Best: 0.725469 using {&#39;logisticregression__C&#39;: 10}
+0.723603  with:   {&#39;logisticregression__C&#39;: 0.1}
+0.724318  with:   {&#39;logisticregression__C&#39;: 1}
+0.725469  with:   {&#39;logisticregression__C&#39;: 10}
+
+
+Accuracy score is:  0.7612244897959184
+Precision score is:  0.7824324324324324
+Recall score is:  0.8880368098159509
+F1 score is: 0.8318965517241379</code></pre>
+<p>We can judging the importance of different metrics by its weight in logistic regression model. According to the bar plot, alchol, residual sugar, volatile acidity and density play a more important role than other metrics in judging the quality of white wine.</p>
+
+<p><figure><img src="/image/output_27_2.png" alt="png"></figure></p>
+
+<h2 id="random-forest">Random Forest<a href="#random-forest" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>Random forest algorithm is a better way in dealing with data with many outliers. It also prevent the overfitting problem by aggregating many decision trees to give optimal model. Since it uses decision tree as based algorithm, there is no need to normalize the data. By using <code>sklearn.model_selection.GridSearchCV</code> to search best parameter, we build a random forest model which achieve 0.836 in accuracy score and 0.877 in f1 score.</p>
+<pre><code>Best: 0.861909 using {&#39;criterion&#39;: &#39;gini&#39;, &#39;n_estimators&#39;: 300}
+0.856439  with:   {&#39;criterion&#39;: &#39;gini&#39;, &#39;n_estimators&#39;: 100}
+0.859427  with:   {&#39;criterion&#39;: &#39;gini&#39;, &#39;n_estimators&#39;: 200}
+0.861909  with:   {&#39;criterion&#39;: &#39;gini&#39;, &#39;n_estimators&#39;: 300}
+0.859657  with:   {&#39;criterion&#39;: &#39;gini&#39;, &#39;n_estimators&#39;: 400}
+0.856118  with:   {&#39;criterion&#39;: &#39;entropy&#39;, &#39;n_estimators&#39;: 100}
+0.858843  with:   {&#39;criterion&#39;: &#39;entropy&#39;, &#39;n_estimators&#39;: 200}
+0.857771  with:   {&#39;criterion&#39;: &#39;entropy&#39;, &#39;n_estimators&#39;: 300}
+0.860638  with:   {&#39;criterion&#39;: &#39;entropy&#39;, &#39;n_estimators&#39;: 400}
+
+
+[[246  82]
+ [ 78 574]]
+0.8367346938775511
+0.875
+0.8803680981595092
+0.8776758409785932</code></pre>
+<p>Sklearn library can estimate feature importance in decision tree-based algorithms by calculating difference of Gini index made by each node. In this model, the top4 most important metrics are alcohol, volatile acidity, density and free sulfur dioxide.</p>
+
+<p><figure><img src="/image/output_32_2.png" alt="png"></figure></p>
+
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>According to the correlation measurement made by MIC and Pearson correlation coefficient and feature importance in LR and Random forest model, alcohol is the most important metric in evaluating the quality of white wine. Generally, the higher the alcohol content, the better the quality of the wine. Some other important metrics include density, volatile acidity and residual sugar.</p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+	</footer>
+
+
+
+	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

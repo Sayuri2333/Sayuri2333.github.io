@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>资料推荐 on SayuriBlog</title>
-    <link>https://sayuri2333.github.io/tags/%E8%B5%84%E6%96%99%E6%8E%A8%E8%8D%90/</link>
+    <link>https://example.com/tags/%E8%B5%84%E6%96%99%E6%8E%A8%E8%8D%90/</link>
     <description>Recent content in 资料推荐 on SayuriBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
     <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://sayuri2333.github.io/tags/%E8%B5%84%E6%96%99%E6%8E%A8%E8%8D%90/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/%E8%B5%84%E6%96%99%E6%8E%A8%E8%8D%90/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>强化学习入门资料</title>
-      <link>https://sayuri2333.github.io/post/%E4%B9%A6%E7%9B%AE/</link>
+      <link>https://example.com/post/%E4%B9%A6%E7%9B%AE/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E4%B9%A6%E7%9B%AE/</guid>
+      <guid>https://example.com/post/%E4%B9%A6%E7%9B%AE/</guid>
       <description>阅读书目 PRML / 国内有非正式版翻译 Reinforcement learning: An Introduction / 有中文版 Artificial intelligence: A Modern Approach Part I-III / 有中文 翻译一般 比较general的书 Deep learning / 花书 Artificial Intelligence and Games / 有中文版 翻译质量还行</description>
     </item>
     

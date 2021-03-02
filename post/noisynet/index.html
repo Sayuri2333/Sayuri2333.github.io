@@ -79,21 +79,27 @@
 
 <p>相比较上述两种方法将exploration分别使用启发式搜索以及损失函数的方式引入算法，NoisyNet算法通过将高斯噪声添加到网络中最后的完全连接层来实现exploration的引入。</p>
 
-<p>相比于普通的神经网络，NoisyNet的权重和偏置都会受到噪音的影响。设其数学表示为<span  class="math">\(y=f_{\theta}(x)\)</span>，其中<span  class="math">\(\theta\)</span>为受噪声影响的参数，则<span  class="math">\(\theta\)</span>可以被定义为：
-<span  class="math">\(
-\theta \stackrel{\text { def }}{=} \mu+\Sigma \odot \varepsilon
-\)</span>
-其中<span  class="math">\(\zeta \stackrel{\text { def }}{=}(\mu, \Sigma)\)</span>为可学习的向量，<span  class="math">\(\varepsilon\)</span>为均值为0的高斯噪声，<span  class="math">\(\Sigma\)</span>为噪声的权重，<span  class="math">\(\odot\)</span>表示点乘。NoisyNet的损失函数可以表示为：
-<span  class="math">\(
-\bar{L}(\zeta) \stackrel{\text { def }}{=} \mathbb{E}[L(\theta)]
-\)</span>
-也就是说，在优化的时候，只对<span  class="math">\(\zeta\)</span>中的参数计算梯度，而不对噪声进行优化；但是在计算损失函数的时候，则考虑到噪声的影响，使用<span  class="math">\(\theta\)</span>作为参数。</p>
+<p>相比于普通的神经网络，NoisyNet的权重和偏置都会受到噪音的影响。设其数学表示为<span  class="math">\(y=f_{\theta}(x)\)</span>，其中<span  class="math">\(\theta\)</span>为受噪声影响的参数，则<span  class="math">\(\theta\)</span>可以被定义为：</p>
 
-<p>举个例子，考虑线性模型<span  class="math">\(y=w x+b\)</span>，未经过噪声扰动时，其参数为<span  class="math">\(w\)</span>，<span  class="math">\(b\)</span>；经过噪声扰动后，式子变成：
-<span  class="math">\(
+<p><span  class="math">\[
+\theta \stackrel{\text { def }}{=} \mu+\Sigma \odot \varepsilon
+\]</span></p>
+
+<p>其中<span  class="math">\(\zeta \stackrel{\text { def }}{=}(\mu, \Sigma)\)</span>为可学习的向量，<span  class="math">\(\varepsilon\)</span>为均值为0的高斯噪声，<span  class="math">\(\Sigma\)</span>为噪声的权重，<span  class="math">\(\odot\)</span>表示点乘。NoisyNet的损失函数可以表示为：</p>
+
+<p><span  class="math">\[
+\bar{L}(\zeta) \stackrel{\text { def }}{=} \mathbb{E}[L(\theta)]
+\]</span></p>
+
+<p>也就是说，在优化的时候，只对<span  class="math">\(\zeta\)</span>中的参数计算梯度，而不对噪声进行优化；但是在计算损失函数的时候，则考虑到噪声的影响，使用<span  class="math">\(\theta\)</span>作为参数。</p>
+
+<p>举个例子，考虑线性模型<span  class="math">\(y=w x+b\)</span>，未经过噪声扰动时，其参数为<span  class="math">\(w\)</span>，<span  class="math">\(b\)</span>；经过噪声扰动后，式子变成：</p>
+
+<p><span  class="math">\[
 y \stackrel{\text { def }}{=}\left(\mu^{w}+\sigma^{w} \odot \varepsilon^{w}\right) x+\mu^{b}+\sigma^{b} \odot \varepsilon^{b}
-\)</span>
-其中<span  class="math">\(\mu^{w}\)</span>,<span  class="math">\(\sigma^{w}\)</span>,<span  class="math">\(\mu^{b}\)</span>以及<span  class="math">\(\sigma^{b}\)</span>是可以调整的，而<span  class="math">\(\varepsilon^{w}\)</span>以及<span  class="math">\(\varepsilon^{b}\)</span>是不可以调整的。</p>
+\]</span></p>
+
+<p>其中<span  class="math">\(\mu^{w}\)</span>,<span  class="math">\(\sigma^{w}\)</span>,<span  class="math">\(\mu^{b}\)</span>以及<span  class="math">\(\sigma^{b}\)</span>是可以调整的，而<span  class="math">\(\varepsilon^{w}\)</span>以及<span  class="math">\(\varepsilon^{b}\)</span>是不可以调整的。</p>
 
 <h3 id="引入噪声的方法">引入噪声的方法<a href="#引入噪声的方法" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
@@ -102,32 +108,42 @@ y \stackrel{\text { def }}{=}\left(\mu^{w}+\sigma^{w} \odot \varepsilon^{w}\righ
 <ul>
 <li><p><strong>Independent Gaussian noise</strong> 指的是给每一个权重都添加一个独立的噪声，并且具有模型自己学习的<span  class="math">\(\mu\)</span>和<span  class="math">\(\sigma\)</span>。假设一个具有p个神经元输入，q个神经元输出的全连接层，在这种情况下，需要的随机噪声变量个数为(pq+q)个。</p></li>
 
-<li><p><strong>Factorised Gaussian noise</strong> 指的是分配给每一个神经元一个独立的高斯噪声，每个神经元具有独立的<span  class="math">\(\mu\)</span>和<span  class="math">\(\sigma\)</span>。具体到每一个权重，权重<span  class="math">\(w_{i j}\)</span>的噪声为
-<span  class="math">\(
-\varepsilon_{i, j}^{w}=f\left(\varepsilon_{i}\right) f\left(\varepsilon_{j}\right)
-\)</span>
-偏置<span  class="math">\(b_{j}\)</span>的噪声为
-<span  class="math">\(
-\varepsilon_{j}^{b}=f\left(\varepsilon_{j}\right)
-\)</span>
-其中<span  class="math">\(f\)</span>可以使用<span  class="math">\(f(x)=\operatorname{sgn}(x) \sqrt{|x|}\)</span></p></li>
+<li><p><strong>Factorised Gaussian noise</strong> 指的是分配给每一个神经元一个独立的高斯噪声，每个神经元具有独立的<span  class="math">\(\mu\)</span>和<span  class="math">\(\sigma\)</span>。具体到每一个权重，权重<span  class="math">\(w_{i j}\)</span>的噪声为</p></li>
 </ul>
+
+<p><span  class="math">\[
+  \varepsilon_{i, j}^{w}=f\left(\varepsilon_{i}\right) f\left(\varepsilon_{j}\right)
+  \]</span></p>
+
+<p>偏置<span  class="math">\(b_{j}\)</span>的噪声为</p>
+
+<p><span  class="math">\[
+  \varepsilon_{j}^{b}=f\left(\varepsilon_{j}\right)
+  \]</span></p>
+
+<p>其中<span  class="math">\(f\)</span>可以使用<span  class="math">\(f(x)=\operatorname{sgn}(x) \sqrt{|x|}\)</span></p>
 
 <h3 id="计算">计算<a href="#计算" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
-<p>根据损失函数，可以定义梯度为
-<span  class="math">\(
+<p>根据损失函数，可以定义梯度为</p>
+
+<p><span  class="math">\[
 \nabla \bar{L}(\zeta)=\nabla \mathbb{E}[L(\theta)]=\mathbb{E}\left[\nabla_{\mu, \Sigma} L(\mu+\Sigma \odot \varepsilon)\right]
-\)</span>
-使用蒙特卡洛法估计有
-<span  class="math">\(
+\]</span></p>
+
+<p>使用蒙特卡洛法估计有</p>
+
+<p><span  class="math">\[
 \nabla \bar{L}(\zeta) \approx \nabla_{\mu, \Sigma} L(\mu+\Sigma \odot \xi)
-\)</span>
-在DQN中存在Online network以及Target Network，其参数分别为<span  class="math">\(\theta\)</span>以及<span  class="math">\(\theta'\)</span>。当使用Noisy Network时，就变成了Online Network<span  class="math">\(Q(s, a, \varepsilon ; \zeta)\)</span>以及Target Network<span  class="math">\(Q\left(s, a, \varepsilon^{\prime} ; \zeta^{-}\right)\)</span>。使用蒙特卡洛法的损失函数为
-<span  class="math">\(
+\]</span></p>
+
+<p>在DQN中存在Online network以及Target Network，其参数分别为<span  class="math">\(\theta\)</span>以及<span  class="math">\(\theta'\)</span>。当使用Noisy Network时，就变成了Online Network<span  class="math">\(Q(s, a, \varepsilon ; \zeta)\)</span>以及Target Network<span  class="math">\(Q\left(s, a, \varepsilon^{\prime} ; \zeta^{-}\right)\)</span>。使用蒙特卡洛法的损失函数为</p>
+
+<p><span  class="math">\[
 \bar{L}(\zeta)=\mathbb{E}\left[\mathbb{E}_{(s, a, r, y) \sim D}\left[r+\gamma \max _{b \in A} Q\left(s', b, \varepsilon^{\prime} ; \zeta^{-}\right)-Q(s, a, \varepsilon ; \zeta)\right]^{2}\right]
-\)</span>
-其中<span  class="math">\(\varepsilon\)</span>以及<span  class="math">\(\varepsilon'\)</span>为分别采样的噪声。作者建议在DQN中，每一个新的batch重新采样一次噪声。</p>
+\]</span></p>
+
+<p>其中<span  class="math">\(\varepsilon\)</span>以及<span  class="math">\(\varepsilon'\)</span>为分别采样的噪声。作者建议在DQN中，每一个新的batch重新采样一次噪声。</p>
 
 <p>具体流程如下：</p>
 

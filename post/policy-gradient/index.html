@@ -11,7 +11,7 @@
 <meta itemprop="description" content="DQN类算法的不足 无法表示随机策略。 输出值（Q值）的微小改变可能会导致某一个动作被选中或者不选中，这种不连续的变化会影响算法的收敛。 无法表示">
 <meta itemprop="datePublished" content="2021-03-02T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-03-02T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1420">
+<meta itemprop="wordCount" content="1424">
 
 
 
@@ -138,7 +138,7 @@ J\left(\pi_{\theta}\right)=\underset{\tau \sim \pi_{\theta}}{\mathrm{E}}[R(\tau)
 
 <p>输入：<span  class="math">\(N\)</span>个蒙特卡罗完整序列,训练步长<span  class="math">\(\alpha\)</span></p>
 
-<p>输出：策略函数的参数$\theta$</p>
+<p>输出：策略函数的参数<span  class="math">\(\theta\)</span></p>
 
 <ol>
 <li><p>初始化<span  class="math">\(\theta\)</span></p></li>
@@ -174,7 +174,7 @@ J\left(\pi_{\theta}\right)=\underset{\tau \sim \pi_{\theta}}{\mathrm{E}}[R(\tau)
 
 <h3 id="更新式的几何意义">更新式的几何意义<a href="#更新式的几何意义" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
-<p>显而易见，<span  class="math">\(\log \pi_{\theta}\left(s_{t}, a_{t}\right)\)</span>是策略$\pi$的对数似然表示。因此，<span  class="math">\( \nabla_{\theta} \log \pi_{\theta}\left(s_{t}, a_{t}\right)\)</span>表示了状态<span  class="math">\(S_{t}\)</span>下执行动作<span  class="math">\(A_{t}\)</span>的对数似然的梯度方向。而<span  class="math">\(v_t\)</span>控制了更新的幅度。相比之下，价值越大的动作更新的幅度越大，即下次遇到同样情况时执行此动作的概率会变高。</p>
+<p>显而易见，<span  class="math">\(\log \pi_{\theta}\left(s_{t}, a_{t}\right)\)</span>是策略<span  class="math">\(\pi\)</span>的对数似然表示。因此，<span  class="math">\( \nabla_{\theta} \log \pi_{\theta}\left(s_{t}, a_{t}\right)\)</span>表示了状态<span  class="math">\(S_{t}\)</span>下执行动作<span  class="math">\(A_{t}\)</span>的对数似然的梯度方向。而<span  class="math">\(v_t\)</span>控制了更新的幅度。相比之下，价值越大的动作更新的幅度越大，即下次遇到同样情况时执行此动作的概率会变高。</p>
 
 		</div>
 	</main>

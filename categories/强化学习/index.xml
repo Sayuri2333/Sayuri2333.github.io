@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Policy Gradient</title>
+      <link>https://sayuri2333.github.io/post/policy-gradient/</link>
+      <pubDate>Tue, 02 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/policy-gradient/</guid>
+      <description>DQN类算法的不足 无法表示随机策略。 输出值（Q值）的微小改变可能会导致某一个动作被选中或者不选中，这种不连续的变化会影响算法的收敛。 无法表示</description>
+    </item>
+    
+    <item>
       <title>Deep Recurrent Q Network</title>
       <link>https://sayuri2333.github.io/post/drqn/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/q-learning/</guid>
       <description>Q-learning算法的引入 Q-learning算法的步骤与SARSA算法大致相同，唯一不同的地方在于SARSA算法在更新价值函数时会使用</description>
-    </item>
-    
-    <item>
-      <title>SARSA算法</title>
-      <link>https://sayuri2333.github.io/post/sarsa/</link>
-      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/sarsa/</guid>
-      <description>SARSA算法的引入 SARSA算法不需要环境的状态转化模型，是不基于模型的强化学习问题求解方法。对于它的控制问题的求解与蒙特卡洛法相似，即通</description>
     </item>
     
   </channel>

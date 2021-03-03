@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Tue, 02 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Actor-Critic</title>
+      <link>https://sayuri2333.github.io/post/actor-critic/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/actor-critic/</guid>
+      <description>Policy Gradient的改进 在Policy Gradient的REINFORCE算法实现中，如果某个状态下采样到的复数个动作都取得了正的奖励时，那</description>
+    </item>
     
     <item>
       <title>Noisy Network</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/ddpg%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E9%97%AE%E9%A2%98/</guid>
       <description>重要性采样在策略梯度类算法的应用 PPO算法是重要性采样在策略梯度类算法中应用的典型成果。策略梯度类算法通常以最大化期望奖励（Expected</description>
-    </item>
-    
-    <item>
-      <title>Deep Q-learning算法</title>
-      <link>https://sayuri2333.github.io/post/deep-q-learning/</link>
-      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/deep-q-learning/</guid>
-      <description>价值函数的近似表示 之前介绍的强化学习方法使用的都是有限个状态集合\(S\)，而当遇到连续的状态时，则需要价值函数的近似表示。 价值函数的近似表</description>
     </item>
     
   </channel>

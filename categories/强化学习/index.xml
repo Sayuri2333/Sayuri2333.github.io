@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>DDPG</title>
+      <link>https://sayuri2333.github.io/post/ddpg/</link>
+      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/ddpg/</guid>
+      <description>DDPG的改进 DDPG可以被视为一个对传统PG算法的改进。在Policy Gradient一文中，我们提到了REINFORCE算法，它实际上与</description>
+    </item>
+    
+    <item>
       <title>Actor-Critic</title>
       <link>https://sayuri2333.github.io/post/actor-critic/</link>
       <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/doubledqn/</guid>
       <description>DQN 以及其改进 在原版Q-learning算法中，Q网络的优化目标为： \[ Y_{t}^{\mathrm{Q}} \equiv R_{t+1}+\gamma \max _{a} Q\left(S_{t+1}, a ; \boldsymbol{\theta}_{t}\right) \] 基于此优化目标建立均方误差损失函数，优化迭代式如下：</description>
-    </item>
-    
-    <item>
-      <title>重要性采样的问题</title>
-      <link>https://sayuri2333.github.io/post/ddpg%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/ddpg%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E9%97%AE%E9%A2%98/</guid>
-      <description>重要性采样在策略梯度类算法的应用 PPO算法是重要性采样在策略梯度类算法中应用的典型成果。策略梯度类算法通常以最大化期望奖励（Expected</description>
     </item>
     
   </channel>

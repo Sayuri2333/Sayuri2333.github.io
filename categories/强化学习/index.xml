@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>QR-DQN</title>
+      <link>https://sayuri2333.github.io/post/qr-dqn/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/qr-dqn/</guid>
+      <description>C51算法的缺陷 C51算法中虽然证明了\(\mathcal{T}\)Bellman算子在使用分布时是满足\(\gamma -contracti</description>
+    </item>
     
     <item>
       <title>C51</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/per/</guid>
       <description>PER的由来 在PER之前，像DQN（Nature 2015）以及Double DQN等Deep Q-learning方法都是通过经验回放的手段进行</description>
-    </item>
-    
-    <item>
-      <title>Double DQN算法</title>
-      <link>https://sayuri2333.github.io/post/doubledqn/</link>
-      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/doubledqn/</guid>
-      <description>DQN 以及其改进 在原版Q-learning算法中，Q网络的优化目标为： \[ Y_{t}^{\mathrm{Q}} \equiv R_{t+1}+\gamma \max _{a} Q\left(S_{t+1}, a ; \boldsymbol{\theta}_{t}\right) \] 基于此优化目标建立均方误差损失函数，优化迭代式如下：</description>
     </item>
     
   </channel>

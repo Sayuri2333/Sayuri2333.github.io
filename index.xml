@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>github使用ssh登录</title>
+      <link>https://sayuri2333.github.io/post/github%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/github%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/</guid>
+      <description>配置github使用ssh公钥 git支持使用ssh以及git两种协议。如果git使用https协议，那么每次pull。push都需要输入密码</description>
+    </item>
+    
+    <item>
+      <title>GPG加密</title>
+      <link>https://sayuri2333.github.io/post/gpg%E5%8A%A0%E5%AF%86/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/gpg%E5%8A%A0%E5%AF%86/</guid>
+      <description>对文件进行对称加密 gpg -ca himitsu.txt 对文件进行对称加密。会提示需要输入公钥，需要输入两次。执行命令后会生成himitsu.txt.asc文件。 gpg -d himitsu.txt.asc 对文</description>
+    </item>
     
     <item>
       <title>QR-DQN</title>
@@ -82,24 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/analysis_on_boston_housing/</guid>
       <description>Introduction This study aims to find the important factors that affect the house prices in a certain area. The Boston housing price dataset is used as an example in this study. This dataset is part of the UCI Machine Learning Repository, and you can use it in Python by importing the sklearn library or in R using the MASS library. This dataset contains 13 factors such as per capita income,</description>
-    </item>
-    
-    <item>
-      <title>Wine Quality Prediction With Random Forest</title>
-      <link>https://sayuri2333.github.io/post/solve_project/</link>
-      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/solve_project/</guid>
-      <description>Introduction For winemakers, it is very important to know how to judge the quality of wine by its chemical components. In this report, we analyze the white wine dataset, use random forest algorithm and logistic regression algorithm to build models to distinguish the quality of wine, and determine the importance of each chemical component for wine quality judgment by its weights in both algorithm. Exploratory Data Analysis First import the</description>
-    </item>
-    
-    <item>
-      <title>Dueling DQN算法</title>
-      <link>https://sayuri2333.github.io/post/duelingdqn/</link>
-      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/duelingdqn/</guid>
-      <description>Dueling DQN的改进 Dueling DQN算法主要针对传统DQN算法对于状态价值的评估做出了改进。在传统的DQN算法中，Q网络能够预测给定\((s,a)\)的状</description>
     </item>
     
   </channel>

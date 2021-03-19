@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPSS on SayuriBlog</title>
+    <link>https://sayuri2333.github.io/categories/spss/</link>
+    <description>Recent content in SPSS on SayuriBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>©2020 Sayuri2333.</copyright>
+    <lastBuildDate>Fri, 19 Mar 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sayuri2333.github.io/categories/spss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SPSS-数据的获得与前处理</title>
+      <link>https://sayuri2333.github.io/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/</guid>
+      <description>数据的测量尺度 名义尺度（名字，身份证号） 顺序尺度（小中大，低中高） 间隔尺度（包含顺序尺度的特征+有固定单位） 比率尺度（包含间隔尺度的特征+能</description>
+    </item>
+    
+  </channel>
+</rss>

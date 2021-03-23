@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Fri, 19 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/categories/spss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SPSS-图表</title>
+      <link>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</guid>
+      <description>常用图表 用于显示数据分布 条形图 频数/相对频数分布 饼形图 相对频数/百分比频数分布 直方图 在一个区间组集合上的频数分布 茎叶图 展示等级顺序和分布形态</description>
+    </item>
     
     <item>
       <title>SPSS-数据的获得与前处理</title>

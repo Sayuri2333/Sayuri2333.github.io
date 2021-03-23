@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Fri, 19 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SPSS-图表</title>
+      <link>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</guid>
+      <description>常用图表 用于显示数据分布 条形图 频数/相对频数分布 饼形图 相对频数/百分比频数分布 直方图 在一个区间组集合上的频数分布 茎叶图 展示等级顺序和分布形态</description>
+    </item>
     
     <item>
       <title>SPSS-数据的获得与前处理</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/policy-gradient/</guid>
       <description>DQN类算法的不足 无法表示随机策略。 输出值（Q值）的微小改变可能会导致某一个动作被选中或者不选中，这种不连续的变化会影响算法的收敛。 无法表示</description>
-    </item>
-    
-    <item>
-      <title>Deep Recurrent Q Network</title>
-      <link>https://sayuri2333.github.io/post/drqn/</link>
-      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/drqn/</guid>
-      <description>背景 在DQN的原文中，需要将游戏最近4帧的图像作为Q网络的输入。这是因为仅仅凭借1帧的画面无法判断物体运动速度和方向等的相关信息。但是在某些</description>
     </item>
     
   </channel>

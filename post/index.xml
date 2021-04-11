@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SPSS-协方差分析</title>
+      <link>https://sayuri2333.github.io/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
+      <description>协方差分析 在许多实际问题中，有些控制因素往往很难人为控制，但他们确会对观察变量产生较为显著地影响。在方差分析中，如果忽略这些因素的存在而单纯</description>
+    </item>
     
     <item>
       <title>SPSS-单因素方差分析</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/github%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/</guid>
       <description>配置github使用ssh公钥 git支持使用ssh以及git两种协议。如果git使用https协议，那么每次pull。push都需要输入密码</description>
-    </item>
-    
-    <item>
-      <title>GPG加密</title>
-      <link>https://sayuri2333.github.io/post/gpg%E5%8A%A0%E5%AF%86/</link>
-      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/gpg%E5%8A%A0%E5%AF%86/</guid>
-      <description>对文件进行对称加密 gpg -ca himitsu.txt 对文件进行对称加密。会提示需要输入公钥，需要输入两次。执行命令后会生成himitsu.txt.asc文件。 gpg -d himitsu.txt.asc 对文</description>
     </item>
     
   </channel>

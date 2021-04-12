@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>SPSS-多元回归之逐步回归</title>
+      <link>https://sayuri2333.github.io/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/</link>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/</guid>
+      <description>多重共线性问题的处理 逐步回归：逐步删除不重要的(t相对小)解释变量，用逐步回归法完成。 岭回归：为有偏估计，但能够有效解决共线问题。 主成分回归</description>
+    </item>
+    
+    <item>
       <title>SPSS-多元回归分析</title>
       <link>https://sayuri2333.github.io/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</guid>
       <description>常用图表 用于显示数据分布 条形图 频数/相对频数分布 饼形图 相对频数/百分比频数分布 直方图 在一个区间组集合上的频数分布 茎叶图 展示等级顺序和分布形态</description>
-    </item>
-    
-    <item>
-      <title>SPSS-点估计与区间估计</title>
-      <link>https://sayuri2333.github.io/post/%E7%BB%9F%E8%AE%A1%E9%87%8F%E4%B8%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83/</link>
-      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/%E7%BB%9F%E8%AE%A1%E9%87%8F%E4%B8%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83/</guid>
-      <description>样本分布 在相同的条件下，对总体\(X\)进行\(n\)次重复的，独立的观察，得到\(n\)个结果\((x_1,x_2,...,x_n)\)，</description>
     </item>
     
   </channel>

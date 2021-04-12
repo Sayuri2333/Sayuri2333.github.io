@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/categories/spss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SPSS-一元回归分析</title>
+      <link>https://sayuri2333.github.io/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</guid>
+      <description>回归分析简介 回归分析(Regression)是一种应用极为广泛的统计分析方法，成功应用在金融，经济，管理等领域。它用于分析事物之间的统计关系</description>
+    </item>
     
     <item>
       <title>SPSS-协方差分析</title>

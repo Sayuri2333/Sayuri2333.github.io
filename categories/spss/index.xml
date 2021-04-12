@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>SPSS-多元回归分析</title>
+      <link>https://sayuri2333.github.io/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</guid>
+      <description>多元线性回归的基本概念 回归分析利用线性关系来进行解释与预测。通常在一个研究中，影响因变量的解释变量不止一个，则需要建立包含多个解释变量的多元</description>
+    </item>
+    
+    <item>
       <title>SPSS-协方差分析</title>
       <link>https://sayuri2333.github.io/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/%E7%BB%9F%E8%AE%A1%E9%87%8F%E4%B8%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83/</guid>
       <description>样本分布 在相同的条件下，对总体\(X\)进行\(n\)次重复的，独立的观察，得到\(n\)个结果\((x_1,x_2,...,x_n)\)，</description>
-    </item>
-    
-    <item>
-      <title>SPSS-数据的获得与前处理</title>
-      <link>https://sayuri2333.github.io/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/</link>
-      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/</guid>
-      <description>数据的测量尺度 名义尺度（名字，身份证号） 顺序尺度（小中大，低中高） 间隔尺度（包含顺序尺度的特征+有固定单位） 比率尺度（包含间隔尺度的特征+能</description>
     </item>
     
   </channel>

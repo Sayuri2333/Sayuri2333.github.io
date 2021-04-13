@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SPSS-多元回归之残差分析与异常检测</title>
+      <link>https://sayuri2333.github.io/post/%E6%AE%8B%E5%B7%AE%E5%88%86%E6%9E%90/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/%E6%AE%8B%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
+      <description>残差分析 在多元回归的章节，我们提到进行多元线性回归需要满足几个前提假定。除了假定A0，假定A1、A2以及A3都与模型拟合的残差有关。为了检验</description>
+    </item>
     
     <item>
       <title>SPSS-一元回归分析</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C/</guid>
       <description>假设检验 假设检验分为参数检验以及非参数检验。参数检验是在已知总体分布，且猜测总体的某个参数时使用的。通参数检验通常会先设定一个假设，并使用一</description>
-    </item>
-    
-    <item>
-      <title>SPSS-图表</title>
-      <link>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</link>
-      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</guid>
-      <description>常用图表 用于显示数据分布 条形图 频数/相对频数分布 饼形图 相对频数/百分比频数分布 直方图 在一个区间组集合上的频数分布 茎叶图 展示等级顺序和分布形态</description>
     </item>
     
   </channel>

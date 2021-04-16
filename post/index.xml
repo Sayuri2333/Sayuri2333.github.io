@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Wed, 14 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sayuri2333.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SPSS-相关分析</title>
+      <link>https://sayuri2333.github.io/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sayuri2333.github.io/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</guid>
+      <description>相关分析 相关分析主要分成两个步骤：1.计算样本的相关系数；2.对显著线性关系进行检验。检验的原假设是两个变量之间无显著线性相关性。拒绝原假设</description>
+    </item>
     
     <item>
       <title>SPSS-因子分析</title>
@@ -91,15 +100,6 @@
       
       <guid>https://sayuri2333.github.io/post/%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
       <description>方差分析概述 方差分析从观测变量的方差入手，研究控制变量（自变量）的差异对观测变量（因变量）是否存在显著影响。其中控制因素通常为分类变量，而观</description>
-    </item>
-    
-    <item>
-      <title>SPSS-多因素方差分析</title>
-      <link>https://sayuri2333.github.io/post/%E5%A4%9A%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
-      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://sayuri2333.github.io/post/%E5%A4%9A%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
-      <description>多因素方差分析基本思想 多因素方差分析用来研究两个及两个以上控制变量对观测变量产生显著影响。其不仅可以分析多个因素对观测变量的独立影响，更能够</description>
     </item>
     
   </channel>

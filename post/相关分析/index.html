@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="SPSS-相关分析">
+<meta itemprop="description" content="相关分析 相关分析主要分成两个步骤：1.计算样本的相关系数；2.对显著线性关系进行检验。检验的原假设是两个变量之间无显著线性相关性。拒绝原假设">
+<meta itemprop="datePublished" content="2021-04-16T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-04-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1352">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="SPSS-相关分析" />
+<meta property="og:description" content="相关分析 相关分析主要分成两个步骤：1.计算样本的相关系数；2.对显著线性关系进行检验。检验的原假设是两个变量之间无显著线性相关性。拒绝原假设" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sayuri2333.github.io/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/" />
+<meta property="article:published_time" content="2021-04-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SPSS-相关分析"/>
+<meta name="twitter:description" content="相关分析 相关分析主要分成两个步骤：1.计算样本的相关系数；2.对显著线性关系进行检验。检验的原假设是两个变量之间无显著线性相关性。拒绝原假设"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>SPSS-相关分析</title>
+	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://sayuri2333.github.io/post/">Posts</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>SPSS-相关分析</h1>
+		<div class="content">
+			<h3 id="相关分析">相关分析<a href="#相关分析" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>相关分析主要分成两个步骤：1.计算样本的相关系数；2.对显著线性关系进行检验。检验的原假设是两个变量之间无显著线性相关性。拒绝原假设则认为两总体对应的变量间存在线性关系。</p>
+
+<p>对对不同类型的变量应采用不同的相关系数进行测度。对于连续变量，有序变量以及分类变量都有不同的相关指标。</p>
+
+<h4 id="pearson相关系数">Pearson相关系数<a href="#pearson相关系数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<p>Pearson 简单相关系数度量连续变量之间的线性相关关系。定义<span  class="math">\((X_1,Y_1),...,(X_n,Y_n)\)</span>是<span  class="math">\((X,Y)\)</span>的一组样本，则样本相关系数为：</p>
+
+<p><span  class="math">\[
+r _ { X Y } = \frac { \sum _ { i } \left( x _ { i } - \bar { x } \right) \left( y _ { i } - \bar { y } \right) } { \sqrt { \sum _ { i } \left( x _ { i } - \bar { x } \right) ^ { 2 } } \sqrt { \sum _ { i } \left( y _ { i } - \bar { y } \right) ^ { 2 } } }
+\]</span></p>
+
+<p>对应的统计量为：</p>
+
+<p><span  class="math">\[
+\mathbf { t } = \frac { r \sqrt { n - 2 } } { \sqrt { 1 - r ^ { 2 } } } \sim t ( n - 2 )
+\]</span></p>
+
+<p>其中<span  class="math">\(n\)</span>为样本容量，<span  class="math">\(r\)</span>为简单相关系数。原假设为<span  class="math">\(r=0\)</span>。</p>
+
+<p>Pearson相关系数的特点如下：</p>
+
+<ol>
+<li>Pearson相关系数适用于线性相关的情形；若是复杂的非线性相关，Pearson相关系数的大小不能代表相关性的强弱。</li>
+<li>样本中的极端值对pearson相关系数的影响极大，必要时要剔除。</li>
+<li>可以利用散点图中观测线性关系存在的可能性。</li>
+<li>一般要求就Pearson相关分析对应的两个变量服从双变量正态分布</li>
+</ol>
+
+<h4 id="spearman相关系数">Spearman相关系数<a href="#spearman相关系数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<p>秩相关分析，利用变量的秩进行线性相关分析，是一种非参数的统计方法。相比于Pearson适用面更广，但是统计效能比Pearson相关系数要低，大多数情况下，等级相关系数的绝对值都小于Pearson相关系数。Spearman相关系数的公式为：</p>
+
+<p><span  class="math">\[
+r = 1 - \frac { 6 \sum _ { i = 1 } ^ { n } D _ { i } ^ { 2 } } { n \left( n ^ { 2 } - 1 \right) }
+\]</span></p>
+
+<p>其中<span  class="math">\(n\)</span>为样本容量。<span  class="math">\(\sum _ { i = 1 } ^ { n } D _ { i } ^ { 2 } = \sum _ { i = 1 } ^ { n } \left( U _ { i } - V _ { i } \right) ^ { 2 }\)</span>，<span  class="math">\((U_i,V_i)\)</span>分别为两个变量的秩。对应的统计量和检验与Pearson相关系数一致。</p>
+
+<h4 id="kendall相关系数">Kendall相关系数<a href="#kendall相关系数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<p>Kendall <span  class="math">\(\tau\)</span> 相关系数用非参数检验方法度量定序变量间的线性相关关系。利用是变量的秩，计算一致对数目(U)和非一致对数目(V)数目构建统计量，进行检验。</p>
+
+<h3 id="偏相关分析">偏相关分析<a href="#偏相关分析" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>所谓偏相关分析，是指在诸多相关的变量中，剔除了其中的一个或若干变量的影响后，两个变量之间的相关关系。在剔除变量<span  class="math">\(z\)</span>的影响后，两个变量<span  class="math">\(x,y\)</span>的偏相关系数为：</p>
+
+<p><span  class="math">\[
+r _ { x y , z } = \frac { r _ { x y } - r _ { x z } r _ { y z } } { \sqrt { 1 - r _ { x z } ^ { 2 } } \sqrt { 1 - r _ { y z } ^ { 2 } } }
+\]</span></p>
+
+<p>对应的统计量为：</p>
+
+<p><span  class="math">\[
+t = \frac { r \sqrt { n - k - 2 } } { \sqrt { 1 - r ^ { 2 } } } \sim t ( n - k - 2 )
+\]</span></p>
+
+<p>其中<span  class="math">\(n\)</span>为样本容量，<span  class="math">\(k\)</span>为剔除了的变量数，<span  class="math">\(r\)</span>为偏相关系数。</p>
+
+<h3 id="总结">总结<a href="#总结" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<p>相关分析用于探讨两个变量之间是否存在某种具有统计意义的关联，这种关联很多情况下是针对线性关系的探讨。相关分析会给出关系是否具有显著意义的结论，同时相关系数表明了这种关联的强弱。一般情况下，当分析模型中的两个变量无法分出主次的情况下，我们采用相关分析进行探讨。但进一步，如果能够明确自变量和因变量，则更合适的方法是回归分析。回归分析是建立在相关性显著的基础上的。</p>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+	</footer>
+
+
+
+	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

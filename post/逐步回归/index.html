@@ -1,72 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="SPSS-多元回归之逐步回归">
-<meta itemprop="description" content="多重共线性问题的处理 逐步回归：逐步删除不重要的(t相对小)解释变量，用逐步回归法完成。 岭回归：为有偏估计，但能够有效解决共线问题。 主成分回归">
-<meta itemprop="datePublished" content="2021-04-12T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-04-12T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1605">
-
-
-
-<meta itemprop="keywords" content="" /><meta property="og:title" content="SPSS-多元回归之逐步回归" />
-<meta property="og:description" content="多重共线性问题的处理 逐步回归：逐步删除不重要的(t相对小)解释变量，用逐步回归法完成。 岭回归：为有偏估计，但能够有效解决共线问题。 主成分回归" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sayuri2333.github.io/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/" />
-<meta property="article:published_time" content="2021-04-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-12T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SPSS-多元回归之逐步回归"/>
-<meta name="twitter:description" content="多重共线性问题的处理 逐步回归：逐步删除不重要的(t相对小)解释变量，用逐步回归法完成。 岭回归：为有偏估计，但能够有效解决共线问题。 主成分回归"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
-
-	<title>SPSS-多元回归之逐步回归</title>
-	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://sayuri2333.github.io/post/">Posts</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
-		</ul>
-	</div>
-
-
-	<main class="site-main section-inner thin animated fadeIn faster">
-		<h1>SPSS-多元回归之逐步回归</h1>
-		<div class="content">
-			<h3 id="多重共线性问题的处理">多重共线性问题的处理<a href="#多重共线性问题的处理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>SPSS-多元回归之逐步回归&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">SPSS-多元回归之逐步回归</h1><p class="article date">Monday, April 12, 2021</p></section><article class="article markdown-body"><h3 id="多重共线性问题的处理">多重共线性问题的处理</h3>
 
 <ul>
 <li>逐步回归：逐步删除不重要的(t相对小)解释变量，用逐步回归法完成。</li>
@@ -76,17 +16,17 @@
 
 <p>本文主要针对逐步回归法进行说明。</p>
 
-<h3 id="变量筛选策略">变量筛选策略<a href="#变量筛选策略" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="变量筛选策略">变量筛选策略</h3>
 
 <p>在预测性的多元线性回归分析中，模型中应引入多少解释变量时需要重点研究。如果引入的变量较少，回归方程将无法很好地解释说明被解释变量的变化。但并非引入的变量越多越好。因为变量间可能存在多重共线性的问题。</p>
 
 <p>在多元回归分析中，需要采取一些策略对变量引入回归方程加以控制和筛选。主要有三种策略，分别<strong>为向前筛选策略</strong>，<strong>向后筛选策略</strong>以及<strong>逐步筛选策略</strong>。</p>
 
-<h4 id="基本思想">基本思想<a href="#基本思想" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="基本思想">基本思想</h4>
 
 <p>在考虑<span  class="math">\(Y\)</span>对已知的一群变量<span  class="math">\((x_1,x_2,...,x_k)\)</span>回归时，从变量<span  class="math">\(x_i\)</span>中选出对已解释变差(回归项)的贡献最大的变量（最重要变量），进入回归方程。对已解释变差的贡献大小的判别依据，就是包含了偏解释变差的F统计量<span  class="math">\(f_j\)</span>。</p>
 
-<h4 id="向前筛选策略">向前筛选策略<a href="#向前筛选策略" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="向前筛选策略">向前筛选策略</h4>
 
 <p>依次纳入最重要的候选自变量。设有<span  class="math">\(k\)</span>个自变量。</p>
 
@@ -95,7 +35,7 @@
 <li>在已引入变量xi的基础上，在剩余<span  class="math">\((k-1)\)</span>变量中寻找与因变量偏相关系数最高且通过回归系数显著性检验<span  class="math">\((p<α)\)</span>的变量进入方程，并对新建立的回归方程进行各种检验；该过程一直重复，直至没有可进入方程的变量为止。</li>
 </ol>
 
-<h4 id="向后筛选策略">向后筛选策略<a href="#向后筛选策略" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="向后筛选策略">向后筛选策略</h4>
 
 <p>向后筛选策略是变量不断剔除出回归方程的过程。</p>
 
@@ -104,7 +44,7 @@
 <li>在回归系数显著性检验不显著的一个或多个变量中，剔除t检验值最小的变量，重建模型进行各项检验，直至模型中所有变量的回归系数检验都显著。</li>
 </ol>
 
-<h4 id="逐步回归筛选策略">逐步回归筛选策略<a href="#逐步回归筛选策略" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="逐步回归筛选策略">逐步回归筛选策略</h4>
 
 <p>逐步筛选法时前向筛选与后向筛选的结合。</p>
 
@@ -117,15 +57,15 @@
 
 <p>向前法，向后法和逐步回归法的侧重点不同。当自变量间不存在简单线性相关关系时，三种方法的结果一致。如果自变量间存在一定的简单线性关系，向前法侧重引入单独作用较强的变量；向后法侧重引入联合作用较强的变量；逐步回归法介于二者之间。</p>
 
-<h4 id="spss中选择筛选策略">SPSS中选择筛选策略<a href="#spss中选择筛选策略" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="spss中选择筛选策略">SPSS中选择筛选策略</h4>
 
 <p>在线性回归界面，可以在方法选择栏中选择筛选方法，并在选项界面中设置进入模型以及退出模型需要的F概率值。</p>
 
-<h3 id="多元回归需要考虑的问题">多元回归需要考虑的问题<a href="#多元回归需要考虑的问题" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="多元回归需要考虑的问题">多元回归需要考虑的问题</h3>
 
 <p>多元回归根据研究的目的不同，分为预测(prediction) 或解释(explanation) 两类，采取的回归分析策略亦不相同。</p>
 
-<h4 id="解释回归">解释回归<a href="#解释回归" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="解释回归">解释回归</h4>
 
 <ul>
 <li>主要目的：了解自变量对因变量的影响力。</li>
@@ -133,7 +73,7 @@
 <li>主要方法：<strong>同时回归法</strong>(simultaneous regression)，不考虑变量进入模型的先后顺序，将所有的变量全部一次归入模型(Enter)进行分析。</li>
 </ul>
 
-<h4 id="预测回归">预测回归<a href="#预测回归" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="预测回归">预测回归</h4>
 
 <ul>
 <li>主要目的：实际问题的解决或实务上的预测与控制。</li>
@@ -142,23 +82,18 @@
 </ul>
 
 <p>解释型回归对于共线性问题非常敏感。共线问题除了反映解释变量在概念上可能存在混淆关系，也影响每一个解释变量对于因变量解释力的估计。预测性回归则将共线问题交给逐步分析来克服，并不做理论上的分析。</p>
-
-		</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-	</footer>
-
-
-
-	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
-
+</article><section class="article labels"><a class="category" href=/categories/spss/>SPSS</a></section><section class="article navigation"><p><a class="link" href="/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"><span class="li">&larr;</span>SPSS-一元回归分析</a></p><p><a class="link" href="/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"><span class="li">&rarr;</span>SPSS-多元回归分析</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
 </body>
 
 </html>

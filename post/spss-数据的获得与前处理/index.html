@@ -1,72 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="SPSS-数据的获得与前处理">
-<meta itemprop="description" content="数据的测量尺度 名义尺度（名字，身份证号） 顺序尺度（小中大，低中高） 间隔尺度（包含顺序尺度的特征&#43;有固定单位） 比率尺度（包含间隔尺度的特征&#43;能">
-<meta itemprop="datePublished" content="2021-03-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-03-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1176">
-
-
-
-<meta itemprop="keywords" content="" /><meta property="og:title" content="SPSS-数据的获得与前处理" />
-<meta property="og:description" content="数据的测量尺度 名义尺度（名字，身份证号） 顺序尺度（小中大，低中高） 间隔尺度（包含顺序尺度的特征&#43;有固定单位） 比率尺度（包含间隔尺度的特征&#43;能" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sayuri2333.github.io/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/" />
-<meta property="article:published_time" content="2021-03-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-19T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SPSS-数据的获得与前处理"/>
-<meta name="twitter:description" content="数据的测量尺度 名义尺度（名字，身份证号） 顺序尺度（小中大，低中高） 间隔尺度（包含顺序尺度的特征&#43;有固定单位） 比率尺度（包含间隔尺度的特征&#43;能"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
-
-	<title>SPSS-数据的获得与前处理</title>
-	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://sayuri2333.github.io/post/">Posts</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
-		</ul>
-	</div>
-
-
-	<main class="site-main section-inner thin animated fadeIn faster">
-		<h1>SPSS-数据的获得与前处理</h1>
-		<div class="content">
-			<h3 id="数据的测量尺度">数据的测量尺度<a href="#数据的测量尺度" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>SPSS-数据的获得与前处理&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">SPSS-数据的获得与前处理</h1><p class="article date">Friday, March 19, 2021</p></section><article class="article markdown-body"><h3 id="数据的测量尺度">数据的测量尺度</h3>
 
 <ul>
 <li>名义尺度（名字，身份证号）</li>
@@ -75,7 +15,7 @@
 <li>比率尺度（包含间隔尺度的特征+能有意义的乘除）</li>
 </ul>
 
-<h3 id="数据的获得方法">数据的获得方法<a href="#数据的获得方法" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="数据的获得方法">数据的获得方法</h3>
 
 <ul>
 <li><p>非随机抽样：从总体中有意识的选择具有代表性的典型个体进行细致调查</p></li>
@@ -103,7 +43,7 @@
 <p>整群抽样往往按照自然空间分布分成不重复的部分，其特点是自然存在的群组，而非特别属性划分的集合，强调内在的不一致性。</p></li>
 </ul>
 
-<h3 id="样本的效度">样本的效度<a href="#样本的效度" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="样本的效度">样本的效度</h3>
 
 <ul>
 <li>外部效度：样本是否具有代表性</li>
@@ -118,48 +58,43 @@ n = \frac{Z^2S^2}{d^2}
 
 <p>其中<span  class="math">\(n\)</span>为所需样本量，<span  class="math">\(S\)</span>为总体标准差，<span  class="math">\(d\)</span>为实际应用中允许的调查误差。</p>
 
-<h3 id="多选项的处理">多选项的处理<a href="#多选项的处理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="多选项的处理">多选项的处理</h3>
 
 <p>针对多选项，通常有两种处理方式。第一种为二分法，其会为每个选项生成虚拟变量，并用0、1两个值分别代表是否已选。第二种为分类法，其可以估计多选项问题最多可能出现的答案数，然后为每个答案定义一个变量，变量的取值为备选答案。通常用于按照某种顺序进行多选的操作中。SPSS中通常使用多重响应分析来处理多选项的信息。一般来说，先定义多选项包含的变量集，可以使用<code>分析-多重响应-定义变量集</code>来进行操作。二分法通常只需要定义一个变量集，可以在选项<code>二分法</code>中定义计数值。分类法通常需要根据定义的变量个数定义变量集，并根据取值的不同定义不同的计数值。定义好变量集后，可以使用<code>分析-多重响应-频率</code>进行频率分析，并在<code>分析-多重响应-交叉表</code>中分析因为其他变量而导致多选项取值的不同。</p>
 
-<h3 id="重复值处理">重复值处理<a href="#重复值处理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="重复值处理">重复值处理</h3>
 
 <p>可以使用<code>数据-标识重复的个案</code>来根据某（几）个值的取值寻找重复值。</p>
 
-<h3 id="逻辑性核查">逻辑性核查<a href="#逻辑性核查" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="逻辑性核查">逻辑性核查</h3>
 
 <p>通常可以使用<code>分析-表-设定表</code>来查看问卷内各项选项是否存在矛盾。</p>
 
-<h3 id="遗漏值处理">遗漏值处理<a href="#遗漏值处理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="遗漏值处理">遗漏值处理</h3>
 
 <p>删除处理通常在各项分析内完成，可选完全删除（处理时任何一个变量出现一楼，就将与该受测者有关的数据全部删除）以及配对删除（分析时牵涉的变量有遗漏时才删除，是否删除根据分析命令而定）。</p>
 
 <p>遗漏值置换可以使用<code>转换-替换缺失值</code>来完成。可以使用序列均值，临近点均值，临近点中位数，线性差值（基于缺失值前后两点数据的线性组合填补，是一种加权平均），以及线性趋势（使用回归模型拟合结果填补）几种填补方法。</p>
 
-<h3 id="偏离值与极端值处理">偏离值与极端值处理<a href="#偏离值与极端值处理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="偏离值与极端值处理">偏离值与极端值处理</h3>
 
 <p>可以使用<code>分析-描述统计-探索</code>来观测变量的取值范围以及离群值和极端值的情况。</p>
 
-<h3 id="其他数据处理操作">其他数据处理操作<a href="#其他数据处理操作" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="其他数据处理操作">其他数据处理操作</h3>
 
 <p>使用<code>转换-计算变量</code>可以根据当前某个变量计算新变量。使用<code>转换-可视离散化</code>可以根据当前某个连续变量的值将其分为几类，形成分类变量。可以通过指定值和标签进行范围的选择和名称标定。</p>
-
-		</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-	</footer>
-
-
-
-	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
-
+</article><section class="article labels"><a class="category" href=/categories/spss/>SPSS</a></section><section class="article navigation"><p><a class="link" href="/post/%E7%BB%9F%E8%AE%A1%E9%87%8F%E4%B8%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83/"><span class="li">&larr;</span>SPSS-点估计与区间估计</a></p><p><a class="link" href="/post/github%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/"><span class="li">&rarr;</span>github使用ssh登录</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
 </body>
 
 </html>

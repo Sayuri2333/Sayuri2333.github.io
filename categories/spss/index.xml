@@ -1,105 +1,177 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SPSS on SayuriBlog</title>
-    <link>https://sayuri2333.github.io/categories/spss/</link>
+    <link>/categories/spss/</link>
     <description>Recent content in SPSS on SayuriBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>©2020 Sayuri2333.</copyright>
-    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Apr 2021 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://sayuri2333.github.io/categories/spss/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/categories/spss/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>SPSS-量表信效度分析</title>
+      <link>/post/%E9%87%8F%E8%A1%A8%E7%9A%84%E4%BF%A1%E6%95%88%E5%BA%A6%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E9%87%8F%E8%A1%A8%E7%9A%84%E4%BF%A1%E6%95%88%E5%BA%A6%E5%88%86%E6%9E%90/</guid>
+      <description>信效度分析 问卷在正式定稿之前通常需要进行信度检验和效度检验，以作为编制正式问卷的依据。 信度分析 信度是指一个衡量的正确性或者精确性，信度包括稳</description>
+    </item>
+    
+    <item>
       <title>SPSS-相关分析</title>
-      <link>https://sayuri2333.github.io/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</guid>
       <description>相关分析 相关分析主要分成两个步骤：1.计算样本的相关系数；2.对显著线性关系进行检验。检验的原假设是两个变量之间无显著线性相关性。拒绝原假设</description>
     </item>
     
     <item>
       <title>SPSS-因子分析</title>
-      <link>https://sayuri2333.github.io/post/%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/</link>
       <pubDate>Wed, 14 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/</guid>
       <description>因子分析简介 在研究实际问题的过程中需要尽可能收集相关变量，旨对问题有全面完整的把握与认识。但在实际建模时，变量多未必能真正发挥预期作用，反而</description>
     </item>
     
     <item>
       <title>SPSS-逻辑回归</title>
-      <link>https://sayuri2333.github.io/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</link>
+      <link>/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</link>
       <pubDate>Wed, 14 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</guid>
+      <guid>/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</guid>
       <description>逻辑回归 Logistic 回归为概率型非线性回归模型，是研究分类观察结果(Y)与一些影响因素(X)之间关系的一种多变量分析方法。 在实际工作中，经常需要研究某</description>
     </item>
     
     <item>
       <title>SPSS-多元回归之残差分析与异常检测</title>
-      <link>https://sayuri2333.github.io/post/%E6%AE%8B%E5%B7%AE%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E6%AE%8B%E5%B7%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E6%AE%8B%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E6%AE%8B%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
       <description>残差分析 在多元回归的章节，我们提到进行多元线性回归需要满足几个前提假定。除了假定A0，假定A1、A2以及A3都与模型拟合的残差有关。为了检验</description>
     </item>
     
     <item>
       <title>SPSS-多元回归之虚拟变量</title>
-      <link>https://sayuri2333.github.io/post/%E8%99%9A%E6%8B%9F%E5%8F%98%E9%87%8F/</link>
+      <link>/post/%E8%99%9A%E6%8B%9F%E5%8F%98%E9%87%8F/</link>
       <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E8%99%9A%E6%8B%9F%E5%8F%98%E9%87%8F/</guid>
+      <guid>/post/%E8%99%9A%E6%8B%9F%E5%8F%98%E9%87%8F/</guid>
       <description>虚拟变量 在一个多元回归模型中，因变量和自变量通常都是定量的；但实际研究中，往往存在定性的因素（比如性别，方位，类型等等）。 如果需要将定性的变</description>
     </item>
     
     <item>
       <title>SPSS-一元回归分析</title>
-      <link>https://sayuri2333.github.io/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</guid>
       <description>回归分析简介 回归分析(Regression)是一种应用极为广泛的统计分析方法，成功应用在金融，经济，管理等领域。它用于分析事物之间的统计关系</description>
     </item>
     
     <item>
       <title>SPSS-多元回归之逐步回归</title>
-      <link>https://sayuri2333.github.io/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/</link>
+      <link>/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/</guid>
+      <guid>/post/%E9%80%90%E6%AD%A5%E5%9B%9E%E5%BD%92/</guid>
       <description>多重共线性问题的处理 逐步回归：逐步删除不重要的(t相对小)解释变量，用逐步回归法完成。 岭回归：为有偏估计，但能够有效解决共线问题。 主成分回归</description>
     </item>
     
     <item>
       <title>SPSS-多元回归分析</title>
-      <link>https://sayuri2333.github.io/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</guid>
       <description>多元线性回归的基本概念 回归分析利用线性关系来进行解释与预测。通常在一个研究中，影响因变量的解释变量不止一个，则需要建立包含多个解释变量的多元</description>
     </item>
     
     <item>
       <title>SPSS-协方差分析</title>
-      <link>https://sayuri2333.github.io/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
       <description>协方差分析 在许多实际问题中，有些控制因素往往很难人为控制，但他们确会对观察变量产生较为显著地影响。在方差分析中，如果忽略这些因素的存在而单纯</description>
     </item>
     
     <item>
       <title>SPSS-单因素方差分析</title>
-      <link>https://sayuri2333.github.io/post/%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
+      <link>/post/%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sayuri2333.github.io/post/%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
+      <guid>/post/%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
       <description>方差分析概述 方差分析从观测变量的方差入手，研究控制变量（自变量）的差异对观测变量（因变量）是否存在显著影响。其中控制因素通常为分类变量，而观</description>
+    </item>
+    
+    <item>
+      <title>SPSS-多因素方差分析</title>
+      <link>/post/%E5%A4%9A%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E5%A4%9A%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/</guid>
+      <description>多因素方差分析基本思想 多因素方差分析用来研究两个及两个以上控制变量对观测变量产生显著影响。其不仅可以分析多个因素对观测变量的独立影响，更能够</description>
+    </item>
+    
+    <item>
+      <title>SPSS-非参数检验</title>
+      <link>/post/%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C1/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C1/</guid>
+      <description>单样本K-S检验 K-S检验是以俄罗斯科学家Kolmogorov-Smirnov命名的一种非参数检验方法。该方法利用样本数据推断样本来自的总体</description>
+    </item>
+    
+    <item>
+      <title>SPSS-卡方检验</title>
+      <link>/post/%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C/</guid>
+      <description>单样本非参数检验 在数据分析过程中，由于多种原因，人们往往无法对总体分布形态作简单假设，但却希望能从样本数据中获得尽可能多的信息。这种情况下，</description>
+    </item>
+    
+    <item>
+      <title>SPSS-参数检验</title>
+      <link>/post/%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C/</guid>
+      <description>假设检验 假设检验分为参数检验以及非参数检验。参数检验是在已知总体分布，且猜测总体的某个参数时使用的。通参数检验通常会先设定一个假设，并使用一</description>
+    </item>
+    
+    <item>
+      <title>SPSS-图表</title>
+      <link>/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/spss%E4%B8%AD%E7%9A%84%E5%9B%BE/</guid>
+      <description>常用图表 用于显示数据分布 条形图 频数/相对频数分布 饼形图 相对频数/百分比频数分布 直方图 在一个区间组集合上的频数分布 茎叶图 展示等级顺序和分布形态</description>
+    </item>
+    
+    <item>
+      <title>SPSS-点估计与区间估计</title>
+      <link>/post/%E7%BB%9F%E8%AE%A1%E9%87%8F%E4%B8%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83/</link>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E7%BB%9F%E8%AE%A1%E9%87%8F%E4%B8%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83/</guid>
+      <description>样本分布 在相同的条件下，对总体\(X\)进行\(n\)次重复的，独立的观察，得到\(n\)个结果\((x_1,x_2,...,x_n)\)，</description>
+    </item>
+    
+    <item>
+      <title>SPSS-数据的获得与前处理</title>
+      <link>/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/</guid>
+      <description>数据的测量尺度 名义尺度（名字，身份证号） 顺序尺度（小中大，低中高） 间隔尺度（包含顺序尺度的特征+有固定单位） 比率尺度（包含间隔尺度的特征+能</description>
     </item>
     
   </channel>

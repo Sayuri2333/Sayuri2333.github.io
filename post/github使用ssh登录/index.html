@@ -1,72 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="github使用ssh登录">
-<meta itemprop="description" content="配置github使用ssh公钥 git支持使用ssh以及git两种协议。如果git使用https协议，那么每次pull。push都需要输入密码">
-<meta itemprop="datePublished" content="2021-03-09T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-03-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="538">
-
-
-
-<meta itemprop="keywords" content="" /><meta property="og:title" content="github使用ssh登录" />
-<meta property="og:description" content="配置github使用ssh公钥 git支持使用ssh以及git两种协议。如果git使用https协议，那么每次pull。push都需要输入密码" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sayuri2333.github.io/post/github%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/" />
-<meta property="article:published_time" content="2021-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-09T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="github使用ssh登录"/>
-<meta name="twitter:description" content="配置github使用ssh公钥 git支持使用ssh以及git两种协议。如果git使用https协议，那么每次pull。push都需要输入密码"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
-
-	<title>github使用ssh登录</title>
-	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://sayuri2333.github.io/post/">Posts</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
-		</ul>
-	</div>
-
-
-	<main class="site-main section-inner thin animated fadeIn faster">
-		<h1>github使用ssh登录</h1>
-		<div class="content">
-			<h3 id="配置github使用ssh公钥">配置github使用ssh公钥<a href="#配置github使用ssh公钥" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>github使用ssh登录&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">github使用ssh登录</h1><p class="article date">Tuesday, March 9, 2021</p></section><article class="article markdown-body"><h3 id="配置github使用ssh公钥">配置github使用ssh公钥</h3>
 
 <p>git支持使用ssh以及git两种协议。如果git使用https协议，那么每次pull。push都需要输入密码。使用git协议，然后使用ssh密钥对认证，即可以实现免密。</p>
 
@@ -78,48 +18,43 @@
 <li>把git的remote url修改为git协议</li>
 </ul>
 
-<h3 id="生成密钥对">生成密钥对<a href="#生成密钥对" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="生成密钥对">生成密钥对</h3>
 
 <p>使用<code>ssh-keygen</code>可以生成密钥对。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -C <span class="s2">&#34;757139408@qq.com&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -C <span class="s2">&#34;757139408@qq.com&#34;</span></code></pre></div>
 <p>生成一对密钥，会产生<code>id_rsa</code>以及<code>id_rsa.pub</code>两个文件。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat id_rsa.pub</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cat id_rsa.pub</code></pre></div>
 <p>复制<code>id_rsa.pub</code>的内容。</p>
 
-<h3 id="配置公钥到远程仓库">配置公钥到远程仓库<a href="#配置公钥到远程仓库" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="配置公钥到远程仓库">配置公钥到远程仓库</h3>
 
 <p>打开github的个人主页。在右上角头像旁点击小三角，进入<strong>Settings-SSH and GPG keys</strong>。</p>
 
 <p>点击Add SSH Key，Title随便填，Key填写刚刚复制的内容。</p>
 
 <p>在本地主机上测试：</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">ssh -T git@github.com</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">Hi Sayuri! You<span class="err">&#39;</span>ve successfully authenticated, but GitHub does not provide shell access.</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ssh -T git@github.com</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Hi Sayuri! You<span class="err">&#39;</span>ve successfully authenticated, but GitHub does not provide shell access.</code></pre></div>
 <p>出现上述字证明配置成功。</p>
 
-<h3 id="修改git的remote-url">修改git的remote url<a href="#修改git的remote-url" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="修改git的remote-url">修改git的remote url</h3>
 
 <p>在本地仓库中执行下属命令可以查看当前使用的remote url。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">git remote -v</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git remote -v</code></pre></div>
 <p>如果url以https:// 开头的话证明使用的是https协议。我们要把他改为ssh协议。我们可以在远程仓库页面上的Clone按钮处选择SSH，并复制url。并使用下述命令更新remote url。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">git remote set-url origin git@github.com:Sayuri2333/Sayuri2333.github.io.git</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git remote set-url origin git@github.com:Sayuri2333/Sayuri2333.github.io.git</code></pre></div>
 <p>修改完成后就可以使用ssh协议免密码登录git了。</p>
-
-		</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-	</footer>
-
-
-
-	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
-
+</article><section class="article labels"><a class="category" href=/categories/linux/>Linux</a></section><section class="article navigation"><p><a class="link" href="/post/spss-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%BE%97%E4%B8%8E%E5%89%8D%E5%A4%84%E7%90%86/"><span class="li">&larr;</span>SPSS-数据的获得与前处理</a></p><p><a class="link" href="/post/gpg%E5%8A%A0%E5%AF%86/"><span class="li">&rarr;</span>GPG加密</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
 </body>
 
 </html>

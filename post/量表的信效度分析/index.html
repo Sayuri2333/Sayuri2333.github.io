@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>SPSS-量表信效度分析&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">SPSS-量表信效度分析</h1><p class="article date">Monday, April 19, 2021</p></section><article class="article markdown-body"><h3 id="信效度分析">信效度分析</h3>
+
+<p>问卷在正式定稿之前通常需要进行信度检验和效度检验，以作为编制正式问卷的依据。</p>
+
+<h4 id="信度分析">信度分析</h4>
+
+<p>信度是指一个衡量的正确性或者精确性，信度包括稳定性以及一致性。因此信度分析本身与测量的结果是否准确无关，它的作用在于检验测量本身是否稳定。</p>
+
+<p>问卷的信度主要可以分为三个方面：</p>
+
+<ul>
+<li>可靠性。测验信度越高，表示测验结果越可信，但信度除受到测验质量影响外，也受到很多其他受测者因素的影响，故没有一份测验是完全可靠的。</li>
+<li>稳定性。稳定性高的量表(问卷)指一群人在不同时空下接受同样的测度时，结果的差异很小。</li>
+<li>一致性。一致性高的问卷指同一群人接受性质相同，题型相同，目的相同的问卷测量后，在各测量结果间显示出强烈的正相关。</li>
+</ul>
+
+<p>对于信度的测量主要可以分为对内在信度以及外在信度进行测量这两个方面。外在信度指指在不同时间对同一批受测对象实施重复测量时，评估结果是否具有一致性。其主要使用重测信度法。而内在信度主要考察一组测度项测量的是否是同一构件，测度项间是否具有较高的内在一致性。测量方法主要为克朗巴哈<span  class="math">\(\alpha\)</span>系数，剔除克朗巴哈<span  class="math">\(\alpha\)</span>系数以及因子分析。</p>
+
+<h4 id="克朗巴哈系数">克朗巴哈系数</h4>
+
+<p>克朗巴哈<span  class="math">\(\alpha\)</span>系数在1951年Cronbacha 提出，为目前社会科学研究最常用的信度。其量一组测度项的信度，若各测度项反应相同的特质，则各题项间具有真实的相关性。若某题项A与其他题项无相关性，则表明题项A不属于该特质，可以将其从量表删除。其步骤为：</p>
+
+<ol>
+<li><p>计算各测度题项的相关系数矩阵，计算相关系数的均值</p></li>
+
+<li><p>计算克朗巴哈<span  class="math">\(\alpha\)</span>系数
+<span  class="math">\(
+\alpha = \frac { k \bar { r } } { 1 + ( k - 1 ) \bar { r } }
+\)</span></p></li>
+</ol>
+
+<p>其中，<span  class="math">\(k\)</span>为测度题项数。<span  class="math">\(\bar{r}\)</span>为<span  class="math">\(k\)</span>个项目相关系数的均值。克朗巴哈<span  class="math">\(\alpha\)</span>系数的取值范围为0至1，一般来说，系数值0.4作为可信与不可信的分界线。大于0.4为可信，其中大于0.7为很可信，而小于0.4通常不可信。</p>
+
+<h4 id="剔除克朗巴哈系数">剔除克朗巴哈系数</h4>
+
+<p>将某个评估项目剔除后的克朗巴哈<span  class="math">\(\alpha\)</span>系数。如果剔除后得到的系数值较剔除前的系数值有显著提高，则说明所剔除的评估项目与其他项目的相关性较低，正是由于剔除后，才使得其他项目的总体相关性得以提高。借此判断题项信度。</p>
+
+<h4 id="信度分析原则">信度分析原则</h4>
+
+<ul>
+<li>通常针对Likert量尺进行信度分析</li>
+<li>若测度项并非全部同向，存在反向题，应对其进行反向处理，再进行信度分析。</li>
+<li>若量表包含若干子方面，更强调对各个子方面逐个进行信度分析。这种情况下一般先进行构建设效度分析再进行信度检验。</li>
+</ul>
+</article><section class="article labels"><a class="category" href=/categories/spss/>SPSS</a></section><section class="article navigation"><p><a class="link" href="/post/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><span class="li">&larr;</span>数据分析学习路线</a></p><p><a class="link" href="/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/"><span class="li">&rarr;</span>SPSS-相关分析</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
+</body>
+
+</html>

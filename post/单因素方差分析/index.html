@@ -1,72 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="SPSS-单因素方差分析">
-<meta itemprop="description" content="方差分析概述 方差分析从观测变量的方差入手，研究控制变量（自变量）的差异对观测变量（因变量）是否存在显著影响。其中控制因素通常为分类变量，而观">
-<meta itemprop="datePublished" content="2021-04-07T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-04-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2718">
-
-
-
-<meta itemprop="keywords" content="" /><meta property="og:title" content="SPSS-单因素方差分析" />
-<meta property="og:description" content="方差分析概述 方差分析从观测变量的方差入手，研究控制变量（自变量）的差异对观测变量（因变量）是否存在显著影响。其中控制因素通常为分类变量，而观" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sayuri2333.github.io/post/%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/" />
-<meta property="article:published_time" content="2021-04-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-07T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SPSS-单因素方差分析"/>
-<meta name="twitter:description" content="方差分析概述 方差分析从观测变量的方差入手，研究控制变量（自变量）的差异对观测变量（因变量）是否存在显著影响。其中控制因素通常为分类变量，而观"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
-
-	<title>SPSS-单因素方差分析</title>
-	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://sayuri2333.github.io/post/">Posts</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
-		</ul>
-	</div>
-
-
-	<main class="site-main section-inner thin animated fadeIn faster">
-		<h1>SPSS-单因素方差分析</h1>
-		<div class="content">
-			<h3 id="方差分析概述">方差分析概述<a href="#方差分析概述" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>SPSS-单因素方差分析&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">SPSS-单因素方差分析</h1><p class="article date">Wednesday, April 7, 2021</p></section><article class="article markdown-body"><h3 id="方差分析概述">方差分析概述</h3>
 
 <p>方差分析从观测变量的方差入手，研究控制变量（自变量）的差异对观测变量（因变量）是否存在显著影响。其中控制因素通常为分类变量，而观测变量通常为连续变量。导致观测变量值变化的因素通常有两类：控制因素(自变量)不同水平的影响；随机因素的影响，主要指试验过程中的抽样误差。方差分析认为，如果控制变量的不同水平对观测变量产生了显著影响，那么它和随机变量共同作用必然使得观测变量值发生显著变动。反之，如果观测变量值在控制变量的各个水平中没有出现明显波动，则认为该控制变量没有对观测变量产生作用(即自变量和因变量之间不存在关联)，数据波动是抽样误差造成的。</p>
 
@@ -74,7 +14,7 @@
 
 <p>方差分析对观测变量各总体的分布有以下两个基本假设：观测变量各总体服从正态分布； 观测变量各总体的方差应相同。根据控制变量的个数，方差分析分为单因素方差分析，多因素方差分析，及协方差分析。</p>
 
-<h3 id="单因素方差分析">单因素方差分析<a href="#单因素方差分析" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="单因素方差分析">单因素方差分析</h3>
 
 <p>单因素方差分析研究一个控制变量是否对观测变量产生了显著影响, 即检验控制变量不同水平下的观测变量均值的差异。其实质是多个总体的均值是否相同的假设检验，原假设为所有总体的均值都相同，即有<span  class="math">\(\mu_1 = \mu_2 = ... = \mu_5\)</span>。</p>
 
@@ -112,7 +52,7 @@ f = \frac { S _ { A } / ( s - 1 ) } { S _ { E } / ( n - s ) } \sim F ( s - 1 , n
 
 <p>在用SPSS进行单因素方差分析之前，通常需要用箱线图大概观察下控制变量各分组下观测变量的水平。然后使用K-S检验并结合P-P图等手段判断各分组下观测变量的值是否符合正态分布（可以使用<code>分析-描述统计-探索</code>填入因变量和因子之后在绘制中选择带检验的正态图来进行分组正态性检验；可以结合<code>数据-拆分文件</code>对数据进行拆分后使用单样本t检验进行）。进行方差分析可以用<code>分析-比较均值-单因素ANOVA</code>，一般需要先比较方差齐性，如果满足方差齐性且各分组符合正态分布则可以使用单因素方差的结果。如果不满足方差齐性，则可以使用Brown-Forsythe检验或者Welch检验的值（在<code>选项</code>中可以勾选）。当然，如果无法确保各总体的为正态分布，或数据量比较小，可以尝试非参数方法。</p>
 
-<h3 id="多重比较">多重比较<a href="#多重比较" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="多重比较">多重比较</h3>
 
 <p>单因素方差分析的基本分析只能判断控制变量(自变量)是否对观测变量(因变量)产生了显著影响。若产生了影响，还需进一步确定，控制变量的不同水平对观测变量影响程度如何，即哪个水平的作用明显不同于其他水平，哪个水平的作用是不显著。</p>
 
@@ -120,7 +60,7 @@ f = \frac { S _ { A } / ( s - 1 ) } { S _ { E } / ( n - s ) } \sim F ( s - 1 , n
 
 <p>多重比较利用全部观测变量值，实现对各个水平下观测变量总体均值的逐对比较。虽然各种比较方法的统计量不同，但是其原假设都是相应水平下观测变量的均值间不存在显著差异。</p>
 
-<h3 id="多重比较方法简述">多重比较方法简述<a href="#多重比较方法简述" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="多重比较方法简述">多重比较方法简述</h3>
 
 <p>方差齐性时：</p>
 
@@ -144,7 +84,7 @@ f = \frac { S _ { A } / ( s - 1 ) } { S _ { E } / ( n - s ) } \sim F ( s - 1 , n
 
 <p>多重比较可以通过单因素方差分析中的两两比较选项内进行选择。通常可以结合<code>选项</code>里面的方差同质性检验与均值图一起使用。</p>
 
-<h3 id="趋势检验">趋势检验<a href="#趋势检验" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="趋势检验">趋势检验</h3>
 
 <p>当控制变量(自变量)为定序变量时，趋势检验能够分析随着控制变量水平的变化，观测变量值变化的趋势，是呈线性变化趋势，还是二次，三次等多项式变化。通过趋势检验，从另一角度把握控制变量不同水平对观测变量总体作用的程度。</p>
 
@@ -154,28 +94,23 @@ f = \frac { S _ { A } / ( s - 1 ) } { S _ { E } / ( n - s ) } \sim F ( s - 1 , n
 
 <p>勾选多项式后可以选择衡量线性还是高次方关系。趋势检验将组间差进一步细分为可被自变量线性解释的变差(橙色部分)和不能被自变量线性关系解释的变差(黄色部分)。根据显著性（橙色部分Sig值）可以判断随着控制变量水平的变化，观测变量值是否呈线性变化趋势。如果显著性值小于0.05，则通常认为存在线性相关趋势。</p>
 
-<h3 id="总体流程">总体流程<a href="#总体流程" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="总体流程">总体流程</h3>
 
 <p>进行单因素方差分析的总体流程如下图：</p>
 
 <p><figure><img src="/image/SPSS/单因素方差分析流程.png" alt=""></figure></p>
-
-		</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-	</footer>
-
-
-
-	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
-
+</article><section class="article labels"><a class="category" href=/categories/spss/>SPSS</a></section><section class="article navigation"><p><a class="link" href="/post/%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/"><span class="li">&larr;</span>SPSS-协方差分析</a></p><p><a class="link" href="/post/%E5%A4%9A%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/"><span class="li">&rarr;</span>SPSS-多因素方差分析</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
 </body>
 
 </html>

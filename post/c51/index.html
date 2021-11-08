@@ -1,76 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="C51">
-<meta itemprop="description" content="经典强化学习与值分布强化学习的区别 由于状态转移的随机性，状态表示的混叠效应（编码状态时带来的信息丢失）以及函数逼近的引入（使用函数表示状态价">
-<meta itemprop="datePublished" content="2021-03-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-03-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="4488">
-
-
-
-<meta itemprop="keywords" content="" /><meta property="og:title" content="C51" />
-<meta property="og:description" content="经典强化学习与值分布强化学习的区别 由于状态转移的随机性，状态表示的混叠效应（编码状态时带来的信息丢失）以及函数逼近的引入（使用函数表示状态价" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sayuri2333.github.io/post/c51/" />
-<meta property="article:published_time" content="2021-03-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-04T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="C51"/>
-<meta name="twitter:description" content="经典强化学习与值分布强化学习的区别 由于状态转移的随机性，状态表示的混叠效应（编码状态时带来的信息丢失）以及函数逼近的引入（使用函数表示状态价"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
-
-	<title>C51</title>
-	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://sayuri2333.github.io/post/">Posts</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
-		</ul>
-	</div>
-
-
-	<main class="site-main section-inner thin animated fadeIn faster">
-		<h1>C51</h1>
-		<div class="content">
-			<h3 id="经典强化学习与值分布强化学习的区别">经典强化学习与值分布强化学习的区别<a href="#经典强化学习与值分布强化学习的区别" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>C51&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">C51</h1><p class="article date">Thursday, March 4, 2021</p></section><article class="article markdown-body"><h3 id="经典强化学习与值分布强化学习的区别">经典强化学习与值分布强化学习的区别</h3>
 
 <p>由于状态转移的随机性，状态表示的混叠效应（编码状态时带来的信息丢失）以及函数逼近的引入（使用函数表示状态价值带来的信息丢失），状态价值通常具有一定随机性，并可以用某种分布来表示。经典强化学习（DQN算法等）使用单个值的形式预测状态价值可能会忽略掉许多有效信息。因此值分布强化学习旨在拟合出状态价值的分布，从而提高预测准确性。值得一提的是，PG类算法在应用于连续动作时通常也会以某种分布作为输出。但这种情况下输出的分布为动作的概率分布，主体为动作；而值分布强化学习输出的分布为给定状态-动作对情况下其动作价值的分布，主体为价值。</p>
 
-<h3 id="bellman算子">Bellman算子<a href="#bellman算子" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="bellman算子">Bellman算子</h3>
 
 <p>算子，即operator，接受函数输入，并输出函数。若<span  class="math">\(Q(s,a)\)</span>是一个函数，如果<span  class="math">\(s\)</span>是一个<span  class="math">\(n\)</span>维的变量，<span  class="math">\(a\)</span>是一个<span  class="math">\(m\)</span>维的变量，那么动作价值函数<span  class="math">\(Q\)</span>是一个<span  class="math">\(\mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}\)</span>的函数。我们可以引入Bellman算子<span  class="math">\(\mathcal{T}\)</span>来表示Bellman方程。对于某一个具体策略<span  class="math">\(\pi\)</span>以及状态转移矩阵<span  class="math">\(P\)</span>，我们有：</p>
 
@@ -106,7 +46,7 @@
 \begin{array} { l } \mathcal { T } ^ { \pi \infty } Q = Q ^ { \pi } \\ \mathcal { T } ^ { \infty } Q = Q ^ { * } \end{array}
 \]</span></p>
 
-<h3 id="kl散度">KL散度<a href="#kl散度" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="kl散度">KL散度</h3>
 
 <p>对于分布<span  class="math">\(p,q\)</span>，它们的KL散度定义为:</p>
 
@@ -120,7 +60,7 @@
 \mathrm { KL } ( p \| q ) = \sum _ { i = 1 } ^ { N } p \left( x _ { i } \right) \log \frac { p \left( x _ { i } \right) } { q \left( x _ { i } \right) } = \sum _ { i = 1 } ^ { N } p \left( x _ { i } \right) \left[ \log p \left( x _ { i } \right) - \log q \left( x _ { i } \right) \right]
 \]</span></p>
 
-<h3 id="distributional-dqn">Distributional DQN<a href="#distributional-dqn" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="distributional-dqn">Distributional DQN</h3>
 
 <p>Distributional DQN将传统DQN中的value function换成了value distribution。原来的DQN中的值函数为<span  class="math">\(Q(s,a)\)</span>，它接收一个状态动作对<span  class="math">\(s,a\)</span>，并输出实数格式的动作价值<span  class="math">\(Q\)</span>。</p>
 
@@ -152,7 +92,7 @@
 
 <p><span  class="math">\(\mathcal { G } _ { Z }\)</span>看起来很复杂，但实际上指的是令策略<span  class="math">\(\pi\)</span>取最优策略。因此，在Distributional DQN中，我们需要让当前值分布<span  class="math">\(Z(x,a)\)</span>尽可能的靠近<span  class="math">\(\mathcal{T} Z(x,a)\)</span>这个分布。</p>
 
-<h3 id="c51定义">C51定义<a href="#c51定义" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="c51定义">C51定义</h3>
 
 <p>由于<span  class="math">\(Z(x,a)\)</span>分布并不一定符合某种特殊的预设模式，因此C51方法放弃使用高斯分布等参数化方式表示<span  class="math">\(Z(x,a)\)</span>，而是使用了51个等间距的atoms描绘一个分布。实际上其与描绘分布的直方图差距不大，但是直方图更注重区间，而C51算法使用的comb form的方法更注重&quot;点&quot;。当然这个分布肯定是近似的结果，点的范围和个数取决于应用情况。实际上，假设分布<span  class="math">\(Z(x,a)\)</span>的上界为<span  class="math">\(V_{MAX}\)</span>，下界<span  class="math">\(V_{MIN}\)</span>，将最大值和最小值之间的区间均匀化为<span  class="math">\(N\)</span>个点，则每个点<span  class="math">\(\mathcal{z}_i\)</span>有：</p>
 
@@ -172,11 +112,11 @@
 Z _ { \theta } ( x , a ) = z _ { i } \quad w . p . p _ { i } ( x , a ) : = \frac { e ^ { \theta _ { i } ( x , a ) } } { \sum _ { j } e ^ { \theta _ { j } ( x , a ) } }
 \]</span></p>
 
-<h3 id="c51损失函数">C51损失函数<a href="#c51损失函数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="c51损失函数">C51损失函数</h3>
 
 <p>网络结构定义完成后，我们需要设置损失函数，从而完成训练过程。在DQN中，由于网络输出为一个实数，因此我们可以使用均方误差作为损失函数。但是C51算法输出为一个分布，因此我们需要找到一个衡量分布之间距离的方法。通常我们使用Wasserstein Metric作为衡量分布距离的方法（具体解释看<a href="https://zhuanlan.zhihu.com/p/58506295">这篇文章</a>，其实也看不太懂呜呜）。使用Wasserstein Metric可以保证Bellman算子在输出分布的情况下也满足<span  class="math">\(\gamma - contraction\)</span>的条件。但是，对于Q-learning实际用到的最优Bellman算子则没有这样的理论保证。而且使用SGD方法训练时是没有办法保持Wasserstein Metric的。因此，C51算法使用了KL散度启发式的衡量两个分布的距离。</p>
 
-<h3 id="投影bellman更新">投影Bellman更新<a href="#投影bellman更新" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="投影bellman更新">投影Bellman更新</h3>
 
 <p>使用KL散度的离散形式计算可以很容易的算出两个分布之间的距离。但是在实际运算中还会产生一个问题。我们可以通过模拟整个过程找出问题。</p>
 
@@ -237,23 +177,18 @@ D_{KL}(\Phi  { \mathcal { T } } Z  ( x , a ) || Z(x,a))
 <p>C51具体算法流程如下：</p>
 
 <p><figure><img src="/image/C51_algo.png" alt=""></figure></p>
-
-		</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-	</footer>
-
-
-
-	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
-
+</article><section class="article labels"><a class="category" href=/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/>强化学习</a></section><section class="article navigation"><p><a class="link" href="/post/qr-dqn/"><span class="li">&larr;</span>QR-DQN</a></p><p><a class="link" href="/post/ddpg/"><span class="li">&rarr;</span>DDPG</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
 </body>
 
 </html>

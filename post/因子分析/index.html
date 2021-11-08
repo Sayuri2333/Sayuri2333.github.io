@@ -1,72 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
-<meta itemprop="name" content="SPSS-因子分析">
-<meta itemprop="description" content="因子分析简介 在研究实际问题的过程中需要尽可能收集相关变量，旨对问题有全面完整的把握与认识。但在实际建模时，变量多未必能真正发挥预期作用，反而">
-<meta itemprop="datePublished" content="2021-04-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-04-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="5127">
-
-
-
-<meta itemprop="keywords" content="" /><meta property="og:title" content="SPSS-因子分析" />
-<meta property="og:description" content="因子分析简介 在研究实际问题的过程中需要尽可能收集相关变量，旨对问题有全面完整的把握与认识。但在实际建模时，变量多未必能真正发挥预期作用，反而" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sayuri2333.github.io/post/%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/" />
-<meta property="article:published_time" content="2021-04-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-14T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SPSS-因子分析"/>
-<meta name="twitter:description" content="因子分析简介 在研究实际问题的过程中需要尽可能收集相关变量，旨对问题有全面完整的把握与认识。但在实际建模时，变量多未必能真正发挥预期作用，反而"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
-
-	<title>SPSS-因子分析</title>
-	<link rel="stylesheet" href="https://sayuri2333.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://sayuri2333.github.io/">SayuriBlog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://sayuri2333.github.io/post/">Posts</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/Sayuri2333" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://sayuri2333.github.io/post/">Posts</a></li>
-		</ul>
-	</div>
-
-
-	<main class="site-main section-inner thin animated fadeIn faster">
-		<h1>SPSS-因子分析</h1>
-		<div class="content">
-			<h3 id="因子分析简介">因子分析简介<a href="#因子分析简介" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>SPSS-因子分析&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">SPSS-因子分析</h1><p class="article date">Wednesday, April 14, 2021</p></section><article class="article markdown-body"><h3 id="因子分析简介">因子分析简介</h3>
 
 <p>在研究实际问题的过程中需要尽可能收集相关变量，旨对问题有全面完整的把握与认识。但在实际建模时，变量多未必能真正发挥预期作用，反而会给统计分析带来许多问题，主要表现在计算量问题以及变量相关性问题上（变量信息间的高度重叠和相关会给统计方法的应用带来障碍。如多元回归中的“多重共线性的问题”）。</p>
 
@@ -81,7 +21,7 @@
 <li>因子具有命名解释性</li>
 </ul>
 
-<h4 id="因子分析的数学模型">因子分析的数学模型<a href="#因子分析的数学模型" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子分析的数学模型">因子分析的数学模型</h4>
 
 <p>因子分析的核心是用较少的互相独立的因子反映原有变量的绝大部分信息。变量<span  class="math">\(X_i(i=1 \cdots p)\)</span>用<span  class="math">\(m\)</span>个因子<span  class="math">\(F_i(i=1 \cdots m)\)</span>的线性组合来表示。其中对于变量<span  class="math">\(X_i\)</span>，可以表示为：</p>
 
@@ -104,7 +44,7 @@ X _ { i } = a _ { i 1 } F _ { 1 } + a _ { i 2 } F _ { 2 } + \cdots + a _ { i m }
 
 <p>在因子不相关的前提下，因子载荷<span  class="math">\(a_{ij}\)</span>是变量<span  class="math">\(X_i\)</span>与因子<span  class="math">\(F_j\)</span>的相关系数。反映的是<span  class="math">\(X_i\)</span>与<span  class="math">\(F_j\)</span>的相关程度。同时也反映了因子<span  class="math">\(F_j\)</span>对解释变量<span  class="math">\(X_i\)</span>的重要作用和程度。</p>
 
-<h4 id="因子分析的相关概念">因子分析的相关概念<a href="#因子分析的相关概念" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子分析的相关概念">因子分析的相关概念</h4>
 
 <p>我们使用一个例子来进行说明。若要根据学生的代数1，2，几何，三角以及解析几何的分数使用因子分析评定学生的能力，可以建立下述因子分析模型：</p>
 
@@ -148,7 +88,7 @@ G=(0.896)^2+(0.802)^2+(0.516)^2+(0.841)^2+(0.833)^2=3.113
 3.113/5 = 62.56\%
 \]</span></p>
 
-<h3 id="因子分析的基本步骤">因子分析的基本步骤<a href="#因子分析的基本步骤" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="因子分析的基本步骤">因子分析的基本步骤</h3>
 
 <p>因子分析的基本步骤如下：</p>
 
@@ -176,7 +116,7 @@ G=(0.896)^2+(0.802)^2+(0.516)^2+(0.841)^2+(0.833)^2=3.113
 
 <p>通过各种方法求解个样本在各个因子上的得分，为进一步分析奠定基础</p>
 
-<h4 id="前提条件签定">前提条件签定<a href="#前提条件签定" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="前提条件签定">前提条件签定</h4>
 
 <p>主要有三个方法：</p>
 
@@ -186,7 +126,7 @@ G=(0.896)^2+(0.802)^2+(0.516)^2+(0.841)^2+(0.833)^2=3.113
 <li>KMO检验；KMO检验的统计量时用于比较简单相关系数矩阵和偏相关系数的指标。Kaiser给出了KMO的度量标准：0.9以上表示非常适合，0.8表示适合，0.7表示一般，0.6表示不太适合，0.5以下表示极不适合。</li>
 </ul>
 
-<h4 id="因子提取">因子提取<a href="#因子提取" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子提取">因子提取</h4>
 
 <p>通常使用主成分分析法。具体证明此处省略。在主成分分析的实际应用中，一般只选取前面特征根较大的n个主成分。n小于原始变量个数，这样就减少了变量个数(降维)，又能用较少的主成分变量反映原有变量的绝大部分信息。具体步骤如下：</p>
 
@@ -208,7 +148,7 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 <li><strong>根据因子的累计方差贡献率确定因子数</strong>。通常选取累计方差贡献率大于0.85时的特征根个数为因子个数<span  class="math">\(k\)</span>。</li>
 </ol>
 
-<h4 id="因子旋转">因子旋转<a href="#因子旋转" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子旋转">因子旋转</h4>
 
 <p>经过上述步骤，我们可以得到需要的因子，但是这些因子通常因子载荷非常分散，不具有解释性。而在实际分析工作中，我们希望的是对因子的实际含义有比较清楚的认识。</p>
 
@@ -218,13 +158,13 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 
 <p>正交旋转也可以分为方差最大旋转（简化对因子的解释）；四次最大正交旋转（简化对变量的解释）以及等量正交旋转三种。一般使用的是方差最大旋转。</p>
 
-<h4 id="因子得分">因子得分<a href="#因子得分" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子得分">因子得分</h4>
 
 <p>前面我们主要解决了用公共因子的线性组合来表示一组观测变量的有关问题。如果我们要使用这些因子做其他的研究,比如把得到的因子作为自变量来做回归分析,对样本进行分类或评价,这就需要我们对公共因子进行测度,即给出公共因子的值。</p>
 
 <p>各个样本在给定因子上的得分可以通过因子载荷矩阵的权重进行计算。</p>
 
-<h3 id="在spss中使用因子分析主成分回归">在SPSS中使用因子分析（主成分回归）<a href="#在spss中使用因子分析主成分回归" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="在spss中使用因子分析主成分回归">在SPSS中使用因子分析（主成分回归）</h3>
 
 <p>本案例需要从1988年汉城奥运会男子十项全能的真实竞赛成绩出发，分析出决定男性运动员十项全能总成绩的主要运动能力，以便有针对性地更快，更好地进行运动员的选拔和培养。</p>
 
@@ -246,7 +186,7 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 
 <p>接下来我们使用因子分析进行检验。</p>
 
-<h4 id="前提条件签定-1">前提条件签定<a href="#前提条件签定-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="前提条件签定-1">前提条件签定</h4>
 
 <p>我们可以通过相关矩阵以及KMO-Barlett's球形检验来判断样本是否适合因子分析。我们可以使用<code>分析-降维-因子分析</code>进行整个流程的分析。在界面右侧点击描述，勾选<code>系数</code>，<code>显著性水平</code>，<code>KMO和Barlett的球形检验</code>生成分析结果。</p>
 
@@ -254,7 +194,7 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 
 <p>可以看到由许多变量之间的相关性在0.05的显著性水平下超过了0.3，证明变量之间存在较强的相关性。同时，样本的KMO的统计量为0.788，而且Barlett球形检验的Sig值也小于0.05，这说明变量之间存在明显相关性，可以进行因子分析。</p>
 
-<h4 id="因子提取-1">因子提取<a href="#因子提取-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子提取-1">因子提取</h4>
 
 <p>点击抽取按钮，选择<code>碎石图</code>，可以帮助选择提取因子的个数。</p>
 
@@ -262,7 +202,7 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 
 <p>解释的总方差表显示，第1,2公因子的特征根的值远大于1，两者合计携带了71%的原始信息量，3-4公因子的特征根明显小于1，从数据浓缩的角度讲，似乎不需要提取。使用碎石图能更好反映特征根值的变化。从碎石图可以看出，第3,4因子的特征根虽然小于1，但明显高于5-10公因子，而且直到第4因子，模型解释的总方差才超过了85%。从解释数据内在关联性的角度考虑，我们将第3，4因子也加入模型。</p>
 
-<h4 id="因子旋转-1">因子旋转<a href="#因子旋转-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子旋转-1">因子旋转</h4>
 
 <p>提取因子后，四个因子与自变量构成的因子载荷矩阵如下图：</p>
 
@@ -278,11 +218,11 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 
 <p>根据因子载荷的值我们可以总结，第1因子主要与短跑类运动相关，可以命名为短跑冲刺能力；第2因子主要与投掷相关，可以命名为投掷能力；第3因子主要与中长跑相关，可以命名为中长跑耐力；第4因子主要与调高相关，可以命名为弹跳力。<strong>至此，我们可以回答第一个问题。</strong></p>
 
-<h4 id="因子得分-1">因子得分<a href="#因子得分-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="因子得分-1">因子得分</h4>
 
 <p>在界面中点击得分选项，勾选<code>保存为变量</code>，<code>显示因子得分系数矩阵</code>，并在方法栏中选择<code>回归</code>即可将各个自变量在提取出的因子上的得分保存到变量集中。</p>
 
-<h4 id="主成分回归">主成分回归<a href="#主成分回归" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="主成分回归">主成分回归</h4>
 
 <p>为了明确提取出的四个因子是否能解释因变量的变化，每个因子对于因变量变化的重要性如何，我们可以用提取出的4个因子代替10个原始变量进行与总分的回归预测，建立相应的回归模型。</p>
 
@@ -294,7 +234,7 @@ A = \left[ \begin{array} { c c c c } a _ { 11 } & a _ { 12 } & \ldots & a _ { 1 
 
 <p>由标准化的回归系数可以看出，第1，2因子，也就是长跑和投掷能力对于成绩的影响比较重要。<strong>至此，我们可以回答第二个问题。</strong></p>
 
-<h4 id="主成分还原">主成分还原<a href="#主成分还原" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h4 id="主成分还原">主成分还原</h4>
 
 <p>为了达到第三个目标，需要了解原始自变量在回归方程中的重要性依次是多少。由于直接建模所得到的回归方程存在多重共线性，因此结果并不可靠。我们可以将主成分回归方程还原回原始变量的形式，得到更为稳妥的分析结果。</p>
 
@@ -309,23 +249,18 @@ Score =& -0.120 Z100米+0.178 Z跳远+0.1407 Z铅球\\
 \]</span></p>
 
 <p>方程中的标准化系数和原始变量直接进行回归所得到的系数有明显的差异，从现有方程得知，标枪，跳远和跳高是对总分影响最大的3个项目，而不是原回归模型中的撑杆跳项目。<strong>至此，我们可以回答最后一个问题。</strong></p>
-
-		</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2021 <a href="https://sayuri2333.github.io/"></a> Sayuri2333 &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://sayuri2333.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
-	</footer>
-
-
-
-	<script src="https://sayuri2333.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
-
+</article><section class="article labels"><a class="category" href=/categories/spss/>SPSS</a></section><section class="article navigation"><p><a class="link" href="/post/%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/"><span class="li">&larr;</span>SPSS-相关分析</a></p><p><a class="link" href="/post/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"><span class="li">&rarr;</span>SPSS-逻辑回归</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
 </body>
 
 </html>

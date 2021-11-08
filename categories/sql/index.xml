@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on SayuriBlog</title>
+    <link>/categories/sql/</link>
+    <description>Recent content in sql on SayuriBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>©2020 Sayuri2333.</copyright>
+    <lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql安装与密码重置</title>
+      <link>/post/mysql-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mysql-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE/</guid>
+      <description>mysql安装 在mysql下载页面中点击下载Windows(x86, 64-bit), ZIP Archive. 下载完成后解压到文件夹（如E:\mysql-8.0.27），在其中</description>
+    </item>
+    
+  </channel>
+</rss>

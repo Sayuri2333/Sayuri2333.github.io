@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>mysql安装与密码重置&nbsp;&ndash;&nbsp;SayuriBlog</title><link rel="stylesheet" href="/css/core.min.648a6d12e2a3dde16e849ff7df9be3ae5560eafe1a16f581e9555eea238e863fe56d7308f54ae31f49106dd309b237eb.css" integrity="sha384-ZIptEuKj3eFuhJ/335vjrlVg6v4aFvWB6VVe6iOOhj/lbXMI9UrjH0kQbdMJsjfr"><body>
+    <div class="base-body"><code class="html"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"/></code>
+<section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/logo.jpg" alt /><span class="site name">SayuriBlog</span></a></span>
+        <span class="header right-side"></span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">mysql安装与密码重置</h1><p class="article date">Monday, November 8, 2021</p></section><article class="article markdown-body"><h2 id="mysql安装">mysql安装</h2>
+
+<p>在<a href="https://dev.mysql.com/downloads/mysql/">mysql下载页面</a>中点击下载Windows(x86, 64-bit), ZIP Archive.</p>
+
+<p>下载完成后解压到文件夹（如E:\mysql-8.0.27），在其中新建文件my.ini，填写下列文字</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>client<span class="o">]</span>
+<span class="c1"># 设置mysql客户端默认字符集</span>
+default-character-set<span class="o">=</span>utf8
+ 
+<span class="o">[</span>mysqld<span class="o">]</span>
+<span class="c1"># 设置3306端口</span>
+<span class="nv">port</span> <span class="o">=</span> <span class="m">3306</span>
+<span class="c1"># 设置mysql的安装目录</span>
+<span class="nv">basedir</span><span class="o">=</span>E:<span class="se">\\</span>mysql-8.0.27
+<span class="c1"># 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错</span>
+<span class="c1"># datadir=C:\\web\\sqldata</span>
+<span class="c1"># 允许最大连接数</span>
+<span class="nv">max_connections</span><span class="o">=</span><span class="m">20</span>
+<span class="c1"># 服务端使用的字符集默认为8比特编码的latin1字符集</span>
+character-set-server<span class="o">=</span>utf8
+<span class="c1"># 创建新表时将使用的默认存储引擎</span>
+default-storage-engine<span class="o">=</span>INNODB</code></pre></div>
+<p>以管理员身份打开cmd，切换目录</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">cd</span> /d e:<span class="se">\m</span>ysql-8.0.27<span class="se">\b</span>in</code></pre></div>
+<p>初始化数据库</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize --console</code></pre></div>
+<p>执行完之后会输出初始临时密码，会用于后续登录。输入安装命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">mysqld install</code></pre></div>
+<p>然后启动mysql服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">net start mysql</code></pre></div>
+<p>可以使用<code>mysql -h 主机名 -u 用户名 -p</code>登录mysql，登录本机时-h可以忽略：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">mysql -u root -p</code></pre></div>
+<p>然后输入密码即可进入mysql数据库。输入exit或者quit可以退出。</p>
+
+<h2 id="mysql重置密码适用于8027版本">mysql重置密码（适用于8.0.27版本）</h2>
+
+<p>问题来了，如果忘记密码怎么办。</p>
+
+<p>首先要使用管理员cmd停止mysql的服务。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">net stop mysql</code></pre></div>
+<p>然后在此窗口中输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">mysqld --skip-grant-tables --shared-memory</code></pre></div>
+<p>如果输入之后cmd一直没有反应，光标在闪烁的话就说明成功了。不要关闭这个窗口，新开一个管理员cmd输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell">mysql -u root -p</code></pre></div>
+<p>顺利的话应该能不输密码直接进入。进入之后输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">use</span><span class="w"> </span><span class="n">mysql</span><span class="w">
+</span><span class="w"></span><span class="k">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">alter</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">identified</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="s1">&#39;新密码&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">quit</span><span class="p">;</span></code></pre></div>
+<p>即可。使用新的密码能重新进入mysql。</p>
+</article><section class="article labels"><a class="category" href=/categories/sql/>sql</a></section><section class="article navigation"><p><a class="link" href="/post/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><span class="li">&rarr;</span>数据分析学习路线</a class="link">
+    </p></section></div><code class="html"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"crossorigin="anonymous"onload="renderMathInElement(document.body,{delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+</code>
+<section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 <a href="https://github.com/Sayuri2333" target="_blank">Sayuri2333</a>.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></div>
+</body>
+
+</html>
